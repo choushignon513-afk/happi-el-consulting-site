@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://happi-el-consulting.com/sitemap.xml
