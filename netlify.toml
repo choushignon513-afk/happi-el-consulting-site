@@ -1,13 +1,6 @@
 [build]
   publish = "."
   functions = "."
-
-[[redirects]]
-  from = "/sales-operating-system-transport-logistique-cameroun/*"
-  to = "/#solutions"
-  status = 302
-  force = true
-
 [[headers]]
   for = "/*"
 
