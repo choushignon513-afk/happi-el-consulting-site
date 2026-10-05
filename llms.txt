@@ -1,15 +1,29 @@
 # HAPPI-EL CONSULTING
 
-HAPPI-EL CONSULTING est un cabinet de conseil basé à Douala, Cameroun, fondé par Emmanuel Fomba.
-Spécialisé en systèmes de croissance et d'opérations augmentés par l'IA pour les PME.
-Zone d'intervention : Cameroun, Afrique francophone, ouvert à l'international.
+> Cabinet de conseil basé à Douala, Cameroun, fondé par Emmanuel Fomba. Spécialisé en systèmes de croissance et d'opérations augmentés par l'IA pour les PME au Cameroun et en Afrique francophone, ouvert à l'international.
 
 ## Offres
-- HAPPI-EL Diagnostic : à partir de 75 000 FCFA
-- HAPPI-EL Systems : à partir de 1 600 000 FCFA
-- HAPPI-EL Performance : 300 000 FCFA/mois
-- CareFlow AI (verticale santé) : 350 000 FCFA / pilote à 1 500 000 FCFA + 350 000 FCFA/mois
-- LeadFlow AI (génération de leads) : 150 000 FCFA + 100 000 FCFA/mois
+- [HAPPI-EL Diagnostic](https://happi-el-consulting.com/#expertises): Diagnostic exécutif et score de maturité gratuit /20, à partir de 75 000 FCFA.
+- [HAPPI-EL Systems](https://happi-el-consulting.com/#expertises): Conception et déploiement de systèmes CRM et automatisation, à partir de 1 600 000 FCFA.
+- [HAPPI-EL Performance](https://happi-el-consulting.com/#expertises): Pilotage et optimisation continue, 300 000 FCFA/mois.
+- [CareFlow AI](https://happi-el-consulting.com/careflow-ai-cliniques-privees-cameroun): Pilote administratif IA pour cliniques privées, Baseline J0 350 000 FCFA, pilote 1 500 000 FCFA + 350 000 FCFA/mois.
+- [LeadFlow AI](https://happi-el-consulting.com/#expertises): Génération et conversion de prospects qualifiés, 150 000 FCFA + 100 000 FCFA/mois.
+- [EchoFlow AI](https://happi-el-consulting.com/#expertises): Visibilité et citation par les IA génératives (ChatGPT, Claude, Gemini), 100 000 FCFA + 50 000 FCFA/mois.
+
+## Secteurs accompagnés
+- [Transport & logistique](https://happi-el-consulting.com/sales-operating-system-transport-logistique-cameroun)
+- [Immobilier & BTP](https://happi-el-consulting.com/sales-operating-system-btp-immobilier-cameroun)
+- [Cliniques privées](https://happi-el-consulting.com/careflow-ai-cliniques-privees-cameroun)
+- [PME de services](https://happi-el-consulting.com/diagnostic-pme-services-cameroun)
+
+## Preuves de méthode
+- [Baseline de visibilité IA](https://happi-el-consulting.com/etude-visibilite-ia-cameroun-2026): Étude réelle, 9 questions d'acheteur testées sur ChatGPT, Claude et Gemini.
+- [Prix de l'automatisation à Douala](https://happi-el-consulting.com/prix-automatisation-pme-douala-2026): Grille tarifaire réelle 2026.
+- [Méthodologie Baseline J0](https://happi-el-consulting.com/methodologie-baseline-j0-careflow)
+- [Agence ou système HAPPI-EL ?](https://happi-el-consulting.com/comparatif-agence-classique-happi-el)
+
+## À propos
+- [Emmanuel Fomba](https://happi-el-consulting.com/a-propos-emmanuel-fomba): Fondateur et consultant principal, basé à Douala.
 
 ## Contact
 Site : https://happi-el-consulting.com
