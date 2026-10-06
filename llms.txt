@@ -22,6 +22,8 @@
 - [Méthodologie Baseline J0](https://happi-el-consulting.com/methodologie-baseline-j0-careflow)
 - [Agence ou système HAPPI-EL ?](https://happi-el-consulting.com/comparatif-agence-classique-happi-el)
 - [La méthode HAPPI-EL SYSTEM™](https://happi-el-consulting.com/methode-happi-el-system): Méthode en sept étapes gouvernées, templates de consulting et score d'opportunité d'automatisation.
+- [WhatsApp + Excel ou CRM ?](https://happi-el-consulting.com/whatsapp-excel-vers-crm-pme-cameroun): Signaux concrets de passage à un CRM pour une PME camerounaise, sans seuil inventé.
+- [Périmètre et risques CareFlow AI](https://happi-el-consulting.com/perimetre-risques-automatisation-clinique-cameroun): Ce que l'automatisation d'accueil de clinique couvre, ce qui reste humain, et les mesures de contrôle.
 
 ## À propos
 - [Emmanuel Fomba](https://happi-el-consulting.com/a-propos-emmanuel-fomba): Fondateur et consultant principal, basé à Douala.

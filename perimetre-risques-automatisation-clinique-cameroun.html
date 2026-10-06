@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Automatiser l'accueil d'une clinique privée : périmètre, risques et contrôle humain | HAPPI-EL CONSULTING</title>
+<meta name="description" content="Ce que CareFlow AI automatise dans une clinique privée au Cameroun, ce qui reste obligatoirement humain, et comment les risques (médicaux, de données) sont gérés dès la conception.">
+<link rel="canonical" href="https://happi-el-consulting.com/perimetre-risques-automatisation-clinique-cameroun">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Automatiser l'accueil d'une clinique privée : périmètre, risques et contrôle humain","image":"https://happi-el-consulting.com/assets/happi-el-logo-institutionnel.svg","datePublished":"2026-10-06","dateModified":"2026-10-06","author":{"@type":"Person","name":"Emmanuel Fomba","url":"https://happi-el-consulting.com/a-propos-emmanuel-fomba.html"},"publisher":{"@type":"Organization","name":"HAPPI-EL CONSULTING"},"description":"Ce que CareFlow AI automatise dans une clinique privée au Cameroun, ce qui reste obligatoirement humain, et comment les risques sont gérés dès la conception."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"CareFlow AI pose-t-il un diagnostic médical ?","acceptedAnswer":{"@type":"Answer","text":"Non, jamais. Le périmètre est exclusivement administratif : horaires, disponibilités, rappels de rendez-vous et questions répétitives. Toute question qui s'approche d'un jugement médical est transférée à un humain, sans tentative de réponse automatique."}},
+{"@type":"Question","name":"Quelles données médicales CareFlow AI collecte-t-il ?","acceptedAnswer":{"@type":"Answer","text":"Aucune donnée clinique sensible. Le système traite des informations administratives (nom, motif de contact non médical, créneau souhaité), jamais un dossier médical ou un résultat d'examen."}},
+{"@type":"Question","name":"Qui reste responsable en cas d'erreur ?","acceptedAnswer":{"@type":"Answer","text":"La clinique et son personnel, comme pour tout outil d'accueil. CareFlow AI est conçu pour transférer à un humain dès qu'une demande sort de son périmètre défini, plutôt que de deviner une réponse."}}
+]}
+</script>
+<style>
+:root{--ink:#0b2421;--paper:#f3efe5;--muted:#64716b;--line:#c8c2b4;--lime:#d9e9a6;--dark:#071a18;--bronze:#b6955c;--chalk:#f9f6ef;
+  --serif:"Iowan Old Style","Palatino Linotype",Baskerville,Georgia,serif;--sans:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.5}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
+header{background:var(--dark);padding:18px 0}
+header .wrap{display:flex;align-items:center;gap:14px}
+.mono{width:36px;height:36px;border:2px solid var(--lime);display:flex;align-items:center;justify-content:center;font-family:var(--serif);color:var(--chalk);font-size:16px}
+header .name{color:var(--chalk);font-weight:800;font-size:14px}
+header .sub{color:var(--bronze);font-size:9px;letter-spacing:.2em;text-transform:uppercase}
+main{padding:48px 0 80px}
+.eyebrow{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);font-weight:700;margin-bottom:10px}
+.updated{font-size:13px;color:var(--muted);margin-bottom:20px}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.5vw,38px);line-height:1.22;margin:0 0 20px}
+.lead{font-size:18px;color:var(--muted);max-width:680px;margin:0 0 30px}
+h2{font-family:var(--serif);font-weight:400;font-size:24px;margin:40px 0 14px}
+p{font-size:16px}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14.5px}
+th{background:var(--dark);color:var(--chalk);text-align:left;padding:10px 12px;font-weight:600}
+td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:nth-child(even){background:rgba(255,255,255,.5)}
+td.oui{color:#2f6b4f;font-weight:700}
+td.non{color:#a4443a;font-weight:700}
+.callout{background:var(--dark);color:var(--chalk);padding:26px 28px;border-radius:14px;margin:28px 0}
+.callout p{color:#d8ddd6;margin:0;font-size:15.5px}
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{font-family:var(--serif);font-size:17px;cursor:pointer}
+details p{margin:10px 0 0;color:var(--muted)}
+.cta{background:var(--dark);border-radius:16px;padding:36px 30px;text-align:center;margin-top:52px}
+.cta h2{color:var(--chalk);margin-top:0}
+.cta a{display:inline-block;background:var(--lime);color:var(--ink);font-weight:800;padding:14px 28px;border-radius:4px;text-decoration:none;margin-top:12px}
+.cta .second{display:inline-block;margin-left:14px;color:var(--chalk);text-decoration:underline;font-size:14px}
+footer{padding:30px 0;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+footer a{color:var(--ink)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="mono">HE</div>
+  <div><div class="name">HAPPI-EL CONSULTING</div><div class="sub">Cabinet de conseil</div></div>
+</div></header>
+
+<main class="wrap">
+  <span class="eyebrow">Méthodologie · CareFlow AI</span>
+  <p class="updated">Mise à jour : octobre 2026 — Douala, Cameroun</p>
+  <h1>Automatiser l'accueil d'une clinique : périmètre, risques et contrôle humain</h1>
+  <p class="lead">Une clinique ne peut pas se permettre qu'un système invente une réponse. CareFlow AI est construit sur un principe simple : automatiser strictement l'administratif répétitif, et transférer immédiatement à un humain tout ce qui s'en écarte — jamais l'inverse.</p>
+
+  <h2>Ce qui peut être automatisé, et ce qui reste humain</h2>
+  <table>
+    <thead><tr><th>Demande</th><th>Traitement</th></tr></thead>
+    <tbody>
+      <tr><td>Horaires d'ouverture, adresse, moyens de paiement acceptés</td><td class="oui">Automatisable</td></tr>
+      <tr><td>Rappel de rendez-vous, confirmation ou report</td><td class="oui">Automatisable</td></tr>
+      <tr><td>Question répétitive déjà couverte par une FAQ validée par la clinique</td><td class="oui">Automatisable</td></tr>
+      <tr><td>Toute question impliquant un symptôme, un diagnostic ou un traitement</td><td class="non">Transféré à un humain, sans tentative de réponse</td></tr>
+      <tr><td>Urgence déclarée par le patient</td><td class="non">Transféré immédiatement, avec consigne d'orientation vers les urgences</td></tr>
+      <tr><td>Réclamation ou situation ambiguë</td><td class="non">Transféré à un humain</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <p>Le principe de conception n'est pas « automatiser le plus possible », c'est « automatiser uniquement ce qui est sans ambiguïté, et transférer tout le reste sans délai ». Un système qui essaie de deviner une réponse médicale est plus dangereux qu'utile — CareFlow AI est conçu pour ne jamais le faire.</p>
+  </div>
+
+  <h2>Les risques identifiés, et comment ils sont gérés</h2>
+  <table>
+    <thead><tr><th>Risque</th><th>Mesure de contrôle</th></tr></thead>
+    <tbody>
+      <tr><td>Une question médicale reçoit une réponse automatique inadaptée</td><td>Détection par mots-clés et ambiguïté → transfert systématique, aucune réponse générée dans le doute</td></tr>
+      <tr><td>Une donnée de santé sensible est collectée sans nécessité</td><td>Le système ne demande et ne stocke que des informations administratives (nom, motif non médical, créneau)</td></tr>
+      <tr><td>Le personnel perd la visibilité sur ce que le système a traité</td><td>Journal de toutes les conversations, consultable par la clinique, avec motif de chaque transfert humain</td></tr>
+      <tr><td>Panne ou indisponibilité du système</td><td>Aucun canal n'est fermé : le téléphone et l'accueil physique restent opérationnels en parallèle</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Comment ce périmètre est fixé</h2>
+  <p>Le périmètre exact — quelles questions sont automatisables dans une clinique donnée — n'est jamais générique. Il est défini avec la clinique elle-même lors du <a href="/methodologie-baseline-j0-careflow.html">Baseline J0</a>, la mesure initiale des demandes réellement reçues, avant tout déploiement.</p>
+
+  <h2>Questions fréquentes</h2>
+  <details><summary>CareFlow AI pose-t-il un diagnostic médical ?</summary><p>Non, jamais. Le périmètre est exclusivement administratif : horaires, disponibilités, rappels de rendez-vous et questions répétitives. Toute question qui s'approche d'un jugement médical est transférée à un humain, sans tentative de réponse automatique.</p></details>
+  <details><summary>Quelles données médicales CareFlow AI collecte-t-il ?</summary><p>Aucune donnée clinique sensible. Le système traite des informations administratives (nom, motif de contact non médical, créneau souhaité), jamais un dossier médical ou un résultat d'examen.</p></details>
+  <details><summary>Qui reste responsable en cas d'erreur ?</summary><p>La clinique et son personnel, comme pour tout outil d'accueil. CareFlow AI est conçu pour transférer à un humain dès qu'une demande sort de son périmètre défini, plutôt que de deviner une réponse. Voir aussi notre page <a href="/careflow-securite.html">Sécurité &amp; Confidentialité</a>.</p></details>
+
+  <div class="cta">
+    <h2>Discuter du périmètre exact pour votre clinique.</h2>
+    <p style="color:#d8ddd6">Baseline J0 à 350 000 FCFA, résultats mesurés, pas supposés.</p>
+    <a href="https://happi-el-consulting.com/#contact">Nous écrire ↗</a>
+    <a class="second" href="https://happi-el-consulting.com/careflow.html">Voir CareFlow AI →</a>
+  </div>
+</main>
+
+<footer>
+  HAPPI-EL CONSULTING · Douala, Cameroun · <a href="https://happi-el-consulting.com">happi-el-consulting.com</a>
+</footer>
+</body>
+</html>
