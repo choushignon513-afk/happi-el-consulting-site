@@ -577,8 +577,8 @@ dialog{border:1px solid #bcb3a2;background:var(--chalk);padding:45px;box-shadow:
 </article>
 <article class="step">
 <span>02 /</span>
-<h3>Prioriser</h3>
-<p>Choisir le cas d’usage selon l’impact, la faisabilité et la valeur attendue.</p>
+<h3>Mesurer &amp; prioriser</h3>
+<p>Établir la baseline puis choisir le cas d’usage selon l’impact, la faisabilité et la valeur attendue.</p>
 </article>
 <article class="step">
 <span>03 /</span>
@@ -587,16 +587,21 @@ dialog{border:1px solid #bcb3a2;background:var(--chalk);padding:45px;box-shadow:
 </article>
 <article class="step">
 <span>04 /</span>
-<h3>Implémenter</h3>
-<p>Déployer un pilote limité, documenté, testé et transmis aux utilisateurs.</p>
+<h3>Piloter</h3>
+<p>Tester un périmètre limité, avec des seuils de réussite et un mécanisme de repli.</p>
 </article>
 <article class="step">
 <span>05 /</span>
+<h3>Déployer</h3>
+<p>Industrialiser uniquement le workflow ayant satisfait les critères d’acceptation.</p>
+</article>
+<article class="step">
+<span>06 /</span>
 <h3>Observer</h3>
 <p>Mesurer l’adoption, la qualité, les incidents et les résultats face au point initial.</p>
 </article>
 <article class="step">
-<span>06 /</span>
+<span>07 /</span>
 <h3>Optimiser</h3>
 <p>Corriger, renforcer la gouvernance et étendre seulement ce qui est prouvé.</p>
 </article>
@@ -606,7 +611,7 @@ dialog{border:1px solid #bcb3a2;background:var(--chalk);padding:45px;box-shadow:
 <section class="growth" id="ressource">
 <div class="growth-grid">
 <div class="growth-media">
-<svg class="method-svg" viewBox="0 0 800 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="La méthode HAPPI-EL SYSTEM en six phases : diagnostiquer, prioriser, architecturer, implémenter, observer, optimiser. Chaque phase se termine par un livrable, une validation et une décision.">
+<svg class="method-svg" viewBox="0 0 800 776" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="La méthode HAPPI-EL SYSTEM en sept étapes : diagnostiquer, mesurer et prioriser, architecturer, piloter, déployer, observer, optimiser. Chaque étape se termine par un livrable, une validation et une décision.">
 <defs>
 <linearGradient id="hecbg" x1="0" y1="0" x2="1" y2="1">
 <stop offset="0" stop-color="#0a221f"/>
@@ -620,23 +625,25 @@ dialog{border:1px solid #bcb3a2;background:var(--chalk);padding:45px;box-shadow:
 @keyframes pulse{0%,4%{fill:#b6955c;height:0}8%{fill:#d9e9a6}16%{height:116}70%{fill:#d9e9a6;height:116}100%{fill:#b6955c;height:116}}
 @keyframes lift{0%,6%{opacity:.55}14%,66%{opacity:1}100%{opacity:.85}}
 @keyframes trace{to{stroke-dashoffset:0}}
-.ph1 .bar{animation:pulse 9.6s 0.0s infinite}
-.ph1{animation:lift 9.6s 0.0s infinite}
-.ph2 .bar{animation:pulse 9.6s 1.6s infinite}
-.ph2{animation:lift 9.6s 1.6s infinite}
-.ph3 .bar{animation:pulse 9.6s 3.2s infinite}
-.ph3{animation:lift 9.6s 3.2s infinite}
-.ph4 .bar{animation:pulse 9.6s 4.800000000000001s infinite}
-.ph4{animation:lift 9.6s 4.800000000000001s infinite}
-.ph5 .bar{animation:pulse 9.6s 6.4s infinite}
-.ph5{animation:lift 9.6s 6.4s infinite}
-.ph6 .bar{animation:pulse 9.6s 8.0s infinite}
-.ph6{animation:lift 9.6s 8.0s infinite}
-.loop{stroke-dasharray:900;stroke-dashoffset:900;animation:trace 9.6s linear infinite}
+.ph1 .bar{animation:pulse 11.2s 0.0s infinite}
+.ph1{animation:lift 11.2s 0.0s infinite}
+.ph2 .bar{animation:pulse 11.2s 1.6s infinite}
+.ph2{animation:lift 11.2s 1.6s infinite}
+.ph3 .bar{animation:pulse 11.2s 3.2s infinite}
+.ph3{animation:lift 11.2s 3.2s infinite}
+.ph4 .bar{animation:pulse 11.2s 4.8s infinite}
+.ph4{animation:lift 11.2s 4.8s infinite}
+.ph5 .bar{animation:pulse 11.2s 6.4s infinite}
+.ph5{animation:lift 11.2s 6.4s infinite}
+.ph6 .bar{animation:pulse 11.2s 8.0s infinite}
+.ph6{animation:lift 11.2s 8.0s infinite}
+.ph7 .bar{animation:pulse 11.2s 9.6s infinite}
+.ph7{animation:lift 11.2s 9.6s infinite}
+.loop{stroke-dasharray:900;stroke-dashoffset:900;animation:trace 11.2s linear infinite}
 @media (prefers-reduced-motion: reduce){.ph .bar,.ph,.loop{animation:none!important}.ph{opacity:1}.loop{stroke-dashoffset:0}}
 </style>
-<rect width="800" height="640" rx="20" fill="url(#hecbg)"/>
-<rect width="800" height="640" rx="20" fill="url(#hecgrid)" opacity=".6"/>
+<rect width="800" height="776" rx="20" fill="url(#hecbg)"/>
+<rect width="800" height="776" rx="20" fill="url(#hecgrid)" opacity=".6"/>
 <text x="54" y="62" font-family="Inter,Segoe UI,sans-serif" font-size="14" font-weight="700" fill="#b6955c" letter-spacing="3">HAPPI-EL SYSTEM™</text>
 <text x="54" y="104" font-family="Iowan Old Style,Palatino Linotype,Georgia,serif" font-size="34" fill="#f9f6ef">Une transformation gouvernée.</text>
 <path class="loop" d="M410 208 H520 a18 18 0 0 1 18 18 V520 a18 18 0 0 1 -18 18 H410" fill="none" stroke="#d9e9a6" stroke-width="2" opacity=".45"/>
@@ -651,8 +658,8 @@ dialog{border:1px solid #bcb3a2;background:var(--chalk);padding:45px;box-shadow:
 <rect x="410" y="150" width="336" height="116" rx="14" fill="#0c2724" stroke="#1d3b37"/>
 <rect class="bar" x="410" y="150" width="5" height="116" rx="3" fill="#b6955c"/>
 <text x="434" y="186" font-family="Inter,Segoe UI,sans-serif" font-size="15" font-weight="700" fill="#d9e9a6" letter-spacing="2">02 /</text>
-<text x="434" y="218" font-family="Iowan Old Style,Palatino Linotype,Georgia,serif" font-size="27" fill="#f9f6ef">Prioriser</text>
-<text x="434" y="245" font-family="Inter,Segoe UI,sans-serif" font-size="14.5" fill="#8fa39b">Impact, faisabilité, valeur attendue</text>
+<text x="434" y="218" font-family="Iowan Old Style,Palatino Linotype,Georgia,serif" font-size="27" fill="#f9f6ef">Mesurer &amp; prioriser</text>
+<text x="434" y="245" font-family="Inter,Segoe UI,sans-serif" font-size="14.5" fill="#8fa39b">Baseline, impact, faisabilité, valeur</text>
 </g>
 <g class="ph ph3">
 <rect x="54" y="286" width="336" height="116" rx="14" fill="#0c2724" stroke="#1d3b37"/>
@@ -665,26 +672,33 @@ dialog{border:1px solid #bcb3a2;background:var(--chalk);padding:45px;box-shadow:
 <rect x="410" y="286" width="336" height="116" rx="14" fill="#0c2724" stroke="#1d3b37"/>
 <rect class="bar" x="410" y="286" width="5" height="116" rx="3" fill="#b6955c"/>
 <text x="434" y="322" font-family="Inter,Segoe UI,sans-serif" font-size="15" font-weight="700" fill="#d9e9a6" letter-spacing="2">04 /</text>
-<text x="434" y="354" font-family="Iowan Old Style,Palatino Linotype,Georgia,serif" font-size="27" fill="#f9f6ef">Implémenter</text>
-<text x="434" y="381" font-family="Inter,Segoe UI,sans-serif" font-size="14.5" fill="#8fa39b">Pilote limité, documenté, testé</text>
+<text x="434" y="354" font-family="Iowan Old Style,Palatino Linotype,Georgia,serif" font-size="27" fill="#f9f6ef">Piloter</text>
+<text x="434" y="381" font-family="Inter,Segoe UI,sans-serif" font-size="14.5" fill="#8fa39b">Périmètre limité, seuils, mécanisme de repli</text>
 </g>
 <g class="ph ph5">
 <rect x="54" y="422" width="336" height="116" rx="14" fill="#0c2724" stroke="#1d3b37"/>
 <rect class="bar" x="54" y="422" width="5" height="116" rx="3" fill="#b6955c"/>
 <text x="78" y="458" font-family="Inter,Segoe UI,sans-serif" font-size="15" font-weight="700" fill="#d9e9a6" letter-spacing="2">05 /</text>
-<text x="78" y="490" font-family="Iowan Old Style,Palatino Linotype,Georgia,serif" font-size="27" fill="#f9f6ef">Observer</text>
-<text x="78" y="517" font-family="Inter,Segoe UI,sans-serif" font-size="14.5" fill="#8fa39b">Adoption, qualité, incidents, résultats</text>
+<text x="78" y="490" font-family="Iowan Old Style,Palatino Linotype,Georgia,serif" font-size="27" fill="#f9f6ef">Déployer</text>
+<text x="78" y="517" font-family="Inter,Segoe UI,sans-serif" font-size="14.5" fill="#8fa39b">Industrialiser ce qui a réussi le pilote</text>
 </g>
 <g class="ph ph6">
 <rect x="410" y="422" width="336" height="116" rx="14" fill="#0c2724" stroke="#1d3b37"/>
 <rect class="bar" x="410" y="422" width="5" height="116" rx="3" fill="#b6955c"/>
 <text x="434" y="458" font-family="Inter,Segoe UI,sans-serif" font-size="15" font-weight="700" fill="#d9e9a6" letter-spacing="2">06 /</text>
-<text x="434" y="490" font-family="Iowan Old Style,Palatino Linotype,Georgia,serif" font-size="27" fill="#f9f6ef">Optimiser</text>
-<text x="434" y="517" font-family="Inter,Segoe UI,sans-serif" font-size="14.5" fill="#8fa39b">Corriger, gouverner, étendre le prouvé</text>
+<text x="434" y="490" font-family="Iowan Old Style,Palatino Linotype,Georgia,serif" font-size="27" fill="#f9f6ef">Observer</text>
+<text x="434" y="517" font-family="Inter,Segoe UI,sans-serif" font-size="14.5" fill="#8fa39b">Adoption, qualité, incidents, résultats</text>
+</g>
+<g class="ph ph7">
+<rect x="54" y="558" width="692" height="116" rx="14" fill="#0c2724" stroke="#1d3b37"/>
+<rect class="bar" x="54" y="558" width="5" height="116" rx="3" fill="#b6955c"/>
+<text x="78" y="594" font-family="Inter,Segoe UI,sans-serif" font-size="15" font-weight="700" fill="#d9e9a6" letter-spacing="2">07 /</text>
+<text x="78" y="626" font-family="Iowan Old Style,Palatino Linotype,Georgia,serif" font-size="27" fill="#f9f6ef">Optimiser</text>
+<text x="78" y="653" font-family="Inter,Segoe UI,sans-serif" font-size="14.5" fill="#8fa39b">Corriger, gouverner, étendre le prouvé</text>
 </g>
 <g>
-<rect x="54" y="564" width="692" height="52" rx="12" fill="#0c2724" stroke="#1d3b37"/>
-<text x="78" y="596" font-family="Inter,Segoe UI,sans-serif" font-size="15" fill="#8fa39b">Chaque phase se termine par un <tspan fill="#d9e9a6">livrable</tspan>, une <tspan fill="#d9e9a6">validation</tspan> et une <tspan fill="#d9e9a6">décision</tspan>.</text>
+<rect x="54" y="700" width="692" height="52" rx="12" fill="#0c2724" stroke="#1d3b37"/>
+<text x="78" y="732" font-family="Inter,Segoe UI,sans-serif" font-size="15" fill="#8fa39b">Chaque étape se termine par un <tspan fill="#d9e9a6">livrable</tspan>, une <tspan fill="#d9e9a6">validation</tspan> et une <tspan fill="#d9e9a6">décision</tspan>.</text>
 </g>
 </svg>
 </div>
