@@ -7,6 +7,10 @@
 
 const SEUIL_QUALIFICATION = 8;
 const HUBSPOT_TOKEN = process.env.HUBSPOT_TOKEN;
+// CRM interne HAPPI-EL OS (os.happi-el-consulting.com) : chaque prospect y est aussi enregistré.
+// HubSpot reste alimenté pendant la transition ; il devient facultatif.
+const OS_URL = "https://os.happi-el-consulting.com/api/prospects/entrant";
+const OS_SECRET = process.env.PROSPECTS_INGEST_SECRET;
 
 const json = (status, body) => new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } });
 const nettoie = (s, max = 500) => String(s ?? "").trim().slice(0, max);
@@ -14,7 +18,7 @@ const emailValide = e => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
 
 export default async (req) => {
   if (req.method !== "POST") return json(405, { error: "methode" });
-  if (!HUBSPOT_TOKEN) return json(500, { error: "hubspot_non_configure" });
+  if (!HUBSPOT_TOKEN && !OS_SECRET) return json(500, { error: "crm_non_configure" });
 
   let payload;
   try { payload = await req.json(); } catch { return json(400, { error: "json" }); }
@@ -65,27 +69,56 @@ export default async (req) => {
         ].join("\n")
   };
 
-  const hs = await fetch("https://api.hubapi.com/crm/v3/objects/contacts", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "Authorization": "Bearer " + HUBSPOT_TOKEN },
-    body: JSON.stringify({ properties })
-  });
-
-  if (!hs.ok && hs.status !== 409) {
-    return json(502, { error: "hubspot_echec" });
+  // 1. CRM interne HAPPI-EL OS
+  let osOk = false;
+  if (OS_SECRET) {
+    try {
+      const r = await fetch(OS_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "x-happiel-cle": OS_SECRET },
+        body: JSON.stringify({
+          source: estEbook ? "ebook" : "diagnostic",
+          fullName, email,
+          phone: nettoie(payload.phone, 30),
+          company: nettoie(payload.company, 150),
+          website: nettoie(payload.website, 200),
+          sector: nettoie(payload.sector, 60),
+          score: estEbook ? undefined : score,
+          level: nettoie(payload.level, 40),
+          recommendedService: nettoie(payload.recommendedService, 100),
+          challenge: nettoie(payload.challenge, 400),
+          pageUri: nettoie(payload.pageUri, 200),
+          consent: true
+        }),
+        signal: AbortSignal.timeout(6000)
+      });
+      osOk = r.ok;
+    } catch { osOk = false; }
   }
 
-  // Contact déjà existant (409) : on tente une mise à jour au lieu d'échouer
+  // 2. HubSpot (transition) — facultatif
+  let hubspotOk = false;
   let mieAJourEchouee = false;
-  if (hs.status === 409) {
-    const patch = await fetch("https://api.hubapi.com/crm/v3/objects/contacts/" + encodeURIComponent(email) + "?idProperty=email", {
-      method: "PATCH",
+  if (HUBSPOT_TOKEN) {
+    const hs = await fetch("https://api.hubapi.com/crm/v3/objects/contacts", {
+      method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + HUBSPOT_TOKEN },
       body: JSON.stringify({ properties })
-    }).catch(() => null);
-    if (!patch || !patch.ok) mieAJourEchouee = true;
+    }).catch(() => ({ ok: false, status: 0 }));
+
+    // Contact déjà existant (409) : on tente une mise à jour au lieu d'échouer
+    if (hs.status === 409) {
+      const patch = await fetch("https://api.hubapi.com/crm/v3/objects/contacts/" + encodeURIComponent(email) + "?idProperty=email", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + HUBSPOT_TOKEN },
+        body: JSON.stringify({ properties })
+      }).catch(() => null);
+      if (!patch || !patch.ok) mieAJourEchouee = true;
+    }
+    hubspotOk = hs.ok || (hs.status === 409 && !mieAJourEchouee);
   }
 
+  if (!osOk && !hubspotOk) return json(502, { error: "crm_echec" });
   return json(200, { ok: true, qualifie, miseAJourEchouee: mieAJourEchouee });
 };
 
