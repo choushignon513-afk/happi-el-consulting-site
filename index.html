@@ -1178,7 +1178,7 @@ const shareButton=document.querySelector('#share-site'),shareFeedback=document.q
   const openPanel=()=>{panel.classList.add('visible');document.getElementById('tracking-accept').focus()};
   const closePanel=()=>panel.classList.remove('visible');
   document.getElementById('tracking-accept').addEventListener('click',()=>{saveChoice('accepted');window.hecLoadMetaPixel();window.hecLoadGoogleAds();closePanel()});
-  document.getElementById('tracking-refuse').addEventListener('click',()=>{saveChoice('refused');closePanel();if(window.__hecMetaLoaded||window.__hecGoogleLoaded)location.reload()});
+  document.getElementById('tracking-refuse').addEventListener('click',()=>{saveChoice('refused');closePanel();if(window.__hecMetaLoaded||window.__hecGoogleLoaded||window.__hecLinkedInLoaded)location.reload()});
   settings.addEventListener('click',openPanel);
   footerSettings.addEventListener('click',openPanel);
   if(!readChoice())openPanel();
