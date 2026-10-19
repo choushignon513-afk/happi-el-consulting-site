@@ -138,11 +138,12 @@ input,select,textarea{font-size:16px!important}button,.btn{min-height:44px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*:before,*:after{animation:none!important;transition:none!important}}
 </style>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
-<style>.sector-guide img{display:block;width:100%;height:auto;border-radius:8px;margin-bottom:16px}.sector-guide article{height:100%}.sector-guide h4{margin-top:12px}</style></head>
+<style>.sector-guide img{display:block;width:100%;height:auto;border-radius:8px;margin-bottom:16px}.sector-guide article{height:100%}.sector-guide h4{margin-top:12px}</style><script src="/assets/tracking.js" defer></script>
+</head>
 <body>
 <aside class="tracking-consent" id="tracking-consent" role="dialog" aria-modal="true" aria-labelledby="tracking-title" aria-describedby="tracking-copy">
   <h2 id="tracking-title">Mesure publicitaire</h2>
-  <p id="tracking-copy">Avec votre accord, Meta et Google Ads peuvent mesurer les visites et actions liées à nos campagnes. Refuser ne bloque aucune fonction du site. Vous pouvez modifier votre choix à tout moment.</p>
+  <p id="tracking-copy">Avec votre accord, Meta, Google Ads et LinkedIn peuvent mesurer les visites et actions liées à nos campagnes. Refuser ne bloque aucune fonction du site. Vous pouvez modifier votre choix à tout moment.</p>
   <div class="tracking-consent-actions">
     <button class="btn light" id="tracking-accept" type="button">Accepter la mesure</button>
     <button class="btn" id="tracking-refuse" type="button">Continuer sans mesure</button>
@@ -1177,7 +1178,7 @@ const shareButton=document.querySelector('#share-site'),shareFeedback=document.q
   const openPanel=()=>{panel.classList.add('visible');document.getElementById('tracking-accept').focus()};
   const closePanel=()=>panel.classList.remove('visible');
   document.getElementById('tracking-accept').addEventListener('click',()=>{saveChoice('accepted');window.hecLoadMetaPixel();window.hecLoadGoogleAds();closePanel()});
-  document.getElementById('tracking-refuse').addEventListener('click',()=>{saveChoice('refused');closePanel();if(window.__hecMetaLoaded||window.__hecGoogleLoaded)location.reload()});
+  document.getElementById('tracking-refuse').addEventListener('click',()=>{saveChoice('refused');closePanel();if(window.__hecMetaLoaded||window.__hecGoogleLoaded||window.__hecLinkedInLoaded)location.reload()});
   settings.addEventListener('click',openPanel);
   footerSettings.addEventListener('click',openPanel);
   if(!readChoice())openPanel();
