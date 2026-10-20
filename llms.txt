@@ -11,7 +11,7 @@
 - [CareFlow AI](https://happi-el-consulting.com/careflow-ai-cliniques-privees-cameroun) : accueil administratif des cliniques privées, sans aucun diagnostic médical. Baseline J0 350 000 FCFA ; pilote contrôlé 1 500 000 FCFA puis 350 000 FCFA/mois.
 3. Piloter au quotidien
 - [HAPPI-EL OS](https://os.happi-el-consulting.com/abonnements) : logiciel de gestion (CRM, registres et impayés, stock, interventions et contrats de maintenance, tableau de bord, automatisations). Abonnement Essentiel 150 000 FCFA/mois, Signature 250 000 FCFA/mois, Cercle Privé dès 500 000 FCFA/mois sur invitation.
-- [HAPPI-EL Performance](https://happi-el-consulting.com/#expertises) : optimisation managée d'un système déployé, à partir de 300 000 FCFA/mois, engagement 6 mois.
+- [HAPPI-EL Performance](https://happi-el-consulting.com/#expertises) : option qui s'ajoute à un abonnement HAPPI-EL OS ; HAPPI-EL mène chaque mois les actions d'amélioration avec des objectifs écrits, à partir de 300 000 FCFA/mois, engagement 6 mois.
 4. Accélérer
 - [LeadFlow AI](https://happi-el-consulting.com/qualification-suivi-demandes-leadflow-cameroun) : qualification et suivi des demandes, 150 000 FCFA puis 100 000 FCFA/mois pendant 3 mois.
 - [EchoFlow AI](https://happi-el-consulting.com/visibilite-preuves-expertise-echoflow-cameroun) : visibilité dans les moteurs de recherche et de réponse IA, 100 000 FCFA puis 50 000 FCFA/mois ; aucune citation garantie. Pack LeadFlow + EchoFlow : 200 000 FCFA puis 130 000 FCFA/mois.
