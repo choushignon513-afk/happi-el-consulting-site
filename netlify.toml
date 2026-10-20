@@ -29,3 +29,16 @@
 
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
+
+# Ancienne copie de la page BTP-Immobilier : redirection permanente vers la page de référence (conserve le référencement).
+[[redirects]]
+  from = "/sales-operating-system-btp-immobilier-cameroun-1"
+  to = "/sales-operating-system-btp-immobilier-cameroun"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sales-operating-system-btp-immobilier-cameroun-1.html"
+  to = "/sales-operating-system-btp-immobilier-cameroun"
+  status = 301
+  force = true
