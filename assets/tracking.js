@@ -84,6 +84,46 @@
 
   if (choice() === 'accepted') loadAll();
 
+  // Conversions Google Ads (jamais sur les pages santé, jamais sans accord).
+  var GOOGLE_CONVERSIONS = {
+    lead: 'AW-18421055573/KxXWCKXB36IdENWA7M9E',      // Diagnostic envoyé (site)
+    whatsapp: 'AW-18421055573/EsO0COT-4KIdENWA7M9E'   // Clic WhatsApp (site)
+  };
+  function googleConversion(sendTo) {
+    if (HEALTH_PAGE || choice() !== 'accepted' || typeof window.gtag !== 'function') return;
+    window.gtag('event', 'conversion', { send_to: sendTo, transport_type: 'beacon' });
+  }
+
+  // Formulaires : la conversion n'est comptée que si le serveur confirme l'enregistrement ({ ok: true }).
+  if (typeof window.fetch === 'function' && !window.__hecFetchWrapped) {
+    window.__hecFetchWrapped = true;
+    var nativeFetch = window.fetch;
+    window.fetch = function (input, init) {
+      var request = nativeFetch.apply(this, arguments);
+      try {
+        var url = typeof input === 'string' ? input : (input && input.url) || '';
+        var method = String((init && init.method) || (input && input.method) || 'GET').toUpperCase();
+        if (method === 'POST' && /\/api\/leads(?:[?#]|$)/.test(url)) {
+          request.then(function (response) {
+            if (!response || !response.ok) return;
+            return response.clone().json().then(function (body) {
+              // Le serveur répond aussi { ok: true } au piège anti-robots (champ caché rempli) : seule une vraie
+              // demande enregistrée contient « miseAJourEchouee ». Sans ce contrôle, un robot compterait comme prospect.
+              if (body && body.ok === true && Object.prototype.hasOwnProperty.call(body, 'miseAJourEchouee')) googleConversion(GOOGLE_CONVERSIONS.lead);
+            }, function () {});
+          }).catch(function () {});
+        }
+      } catch (e) { /* ne jamais bloquer l'envoi du formulaire */ }
+      return request;
+    };
+  }
+
+  // Clic sur un lien WhatsApp du site (toutes les pages, page d'accueil comprise).
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest && e.target.closest('a[href^="https://wa.me/237693207431"]');
+    if (a) googleConversion(GOOGLE_CONVERSIONS.whatsapp);
+  });
+
   // La page d'accueil a déjà sa bannière, son bouton et le suivi des clics WhatsApp : rien à ajouter.
   if (document.getElementById('tracking-consent')) return;
 
