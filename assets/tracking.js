@@ -89,6 +89,12 @@
     lead: 'AW-18421055573/KxXWCKXB36IdENWA7M9E',      // Diagnostic envoyé (site)
     whatsapp: 'AW-18421055573/EsO0COT-4KIdENWA7M9E'   // Clic WhatsApp (site)
   };
+  // Meta : évènement standard « Lead » pour une vraie demande enregistrée (mêmes garde-fous que Google).
+  function metaLead() {
+    if (HEALTH_PAGE || choice() !== 'accepted' || typeof window.fbq !== 'function') return;
+    window.fbq('track', 'Lead');
+  }
+
   function googleConversion(sendTo) {
     if (HEALTH_PAGE || choice() !== 'accepted' || typeof window.gtag !== 'function') return;
     window.gtag('event', 'conversion', { send_to: sendTo, transport_type: 'beacon' });
@@ -109,7 +115,7 @@
             return response.clone().json().then(function (body) {
               // Le serveur répond aussi { ok: true } au piège anti-robots (champ caché rempli) : seule une vraie
               // demande enregistrée contient « miseAJourEchouee ». Sans ce contrôle, un robot compterait comme prospect.
-              if (body && body.ok === true && Object.prototype.hasOwnProperty.call(body, 'miseAJourEchouee')) googleConversion(GOOGLE_CONVERSIONS.lead);
+              if (body && body.ok === true && Object.prototype.hasOwnProperty.call(body, 'miseAJourEchouee')) { googleConversion(GOOGLE_CONVERSIONS.lead); metaLead(); }
             }, function () {});
           }).catch(function () {});
         }
