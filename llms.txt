@@ -7,7 +7,7 @@
 - [Score de maturité /20](https://happi-el-consulting.com/#qualification) : gratuit, en ligne, indicatif.
 - [HAPPI-EL Diagnostic](https://happi-el-consulting.com/#expertises) : payant. Diagnostic Flash 75 000 FCFA (1 h + synthèse sous 48 h) ; audit express 175 000 FCFA (une demi-journée) ; diagnostic exécutif à partir de 450 000 FCFA, déductible à 50 % de la mission engagée sous 60 jours.
 2. Installer
-- [HAPPI-EL Systems](https://happi-el-consulting.com/#expertises) : conception et déploiement du système prioritaire dans HAPPI-EL OS. AI Business OS dès 1 600 000 FCFA (PME de services et PME aux processus complexes, dont maintenance et services techniques) ; Sales OS Immobilier dès 1 900 000 FCFA ; Sales OS Logistique 2 200 000 FCFA.
+- [HAPPI-EL Systems](https://happi-el-consulting.com/#expertises) : conception et déploiement du système prioritaire dans HAPPI-EL OS. AI Business OS dès 1 600 000 FCFA (PME aux systèmes complexes : plus de 5 à 30 personnes, plusieurs processus de services, activités ou sites) ; Sales OS Immobilier dès 1 900 000 FCFA ; Sales OS Logistique 2 200 000 FCFA.
 - [CareFlow AI](https://happi-el-consulting.com/careflow-ai-cliniques-privees-cameroun) : accueil administratif des cliniques privées, sans aucun diagnostic médical. Baseline J0 350 000 FCFA ; pilote contrôlé 1 500 000 FCFA puis 350 000 FCFA/mois.
 - [JurisFlow AI](https://happi-el-consulting.com/jurisflow-ai-cabinets-juridiques-cameroun) : organisation des cabinets juridiques (avocats, notaires, huissiers, conseils, directions juridiques) — demandes, échéancier des délais validé par un avocat, temps passé, honoraires et relances ; aucun conseil juridique ; les informations du module Cabinet ne sont jamais transmises à un fournisseur d'IA, les pièces, faits et stratégie restent au cabinet. Cabinet Essentiel 600 000 FCFA puis 150 000 FCFA/mois (engagement 6 mois) ; Cabinet Complet hybride à partir de 1 800 000 FCFA puis 250 000 FCFA/mois. Accès par le Diagnostic Flash.
 3. Piloter au quotidien
@@ -25,7 +25,7 @@
 - [Cliniques privées](https://happi-el-consulting.com/careflow-ai-cliniques-privees-cameroun)
 - [Cabinets juridiques](https://happi-el-consulting.com/jurisflow-ai-cabinets-juridiques-cameroun)
 - [Diagnostic exécutif transport, logistique et BTP](https://happi-el-consulting.com/diagnostic-executif-transport-logistique-btp-cameroun) : atelier de découverte, cartographie de l'existant, tableau des responsabilités, registre des exceptions, mesure de départ, organisation cible, feuille de route 30/60/90 jours ; 10 à 15 jours ouvrés indicatifs ; dès 450 000 FCFA.
-- [PME de services et PME aux processus complexes](https://happi-el-consulting.com/diagnostic-pme-services-cameroun)
+- [PME aux systèmes complexes](https://happi-el-consulting.com/diagnostic-pme-services-cameroun)
 
 ## Preuves de méthode
 - [Baseline de visibilité IA](https://happi-el-consulting.com/etude-visibilite-ia-cameroun-2026): Étude réelle, 9 questions d'acheteur testées sur ChatGPT, Claude et Gemini.
