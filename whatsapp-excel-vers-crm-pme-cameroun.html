@@ -82,9 +82,9 @@ footer a{color:var(--ink)}
 <li>Les capacités du connecteur : sens des échanges, événements reçus, historique accessible, pièces jointes et limites. Une synchronisation bidirectionnelle doit être explicitement prévue et testée.</li>
 <li>Les règles de contact et d’opposition, les autorisations nécessaires et les conditions de messagerie applicables au compte et aux messages envisagés.</li>
 <li>Un responsable métier, un environnement de test et des données fictives ou des données dont l’utilisation a été autorisée.</li></ul>
-<p>HubSpot peut être étudié selon l’équipement du client. Tout autre CRM ou outil d’orchestration fait l’objet d’un examen de faisabilité : aucune compatibilité universelle ni certification partenaire n’est revendiquée.</p></section>
-<section aria-labelledby="flux"><h2 id="flux">Un flux cible compréhensible par votre équipe</h2>
-<ol><li>Une demande arrive sur le canal WhatsApp retenu.</li><li>Le connecteur transmet les événements disponibles au moteur d’intégration.</li><li>Le système recherche ou crée la fiche CRM selon la règle d’identification.</li><li>Le dossier est qualifié et attribué ; une prochaine action est définie.</li><li>Les actions nécessitant une approbation attendent la décision de la personne habilitée.</li><li>Le résultat est enregistré ; une erreur ou une incertitude déclenche la procédure de reprise.</li></ol>
+<p>Le système de référence proposé est <strong>HAPPI-EL OS, avec son CRM intégré et son moteur d’automatisation natif</strong>. L’équipe travaille dans son espace entreprise : contacts, affaires, tâches, messages et validations. HubSpot, Make ou n8n ne sont pas des prérequis au fonctionnement de ce parcours natif. Un outil tiers déjà utilisé par le client peut être étudié comme connecteur ou source de reprise, selon un périmètre explicite. La messagerie WhatsApp conserve ses propres exigences d’accès et de fournisseur.</p></section>
+<section aria-labelledby="flux"><h2 id="flux">Un flux cible dans votre espace HAPPI-EL OS</h2>
+<ol><li>Une demande arrive sur le canal WhatsApp retenu.</li><li>Le connecteur transmet les événements disponibles au moteur d’intégration.</li><li>HAPPI-EL OS recherche ou crée la fiche de son CRM selon la règle d’identification.</li><li>Le dossier est qualifié et attribué ; une prochaine action est définie.</li><li>Les actions nécessitant une approbation attendent la décision de la personne habilitée.</li><li>Le résultat est enregistré ; une erreur ou une incertitude déclenche la procédure de reprise.</li></ol>
 <p>Ce flux est une architecture cible illustrative. Il ne constitue pas une démonstration d’intégration déjà exécutée pour tous les CRM.</p></section>
 <section id="recette" aria-labelledby="recette-titre"><h2 id="recette-titre">Comment vérifier la livraison du pilote ?</h2>
 <div class="table-scroll"><table><thead><tr><th scope="col">Essai</th><th scope="col">Critère à observer</th></tr></thead><tbody>
@@ -103,6 +103,13 @@ footer a{color:var(--ink)}
 <section aria-labelledby="preuve"><h2 id="preuve">Un périmètre client documenté, des limites explicites</h2>
 <p>Du 28 août au 3 octobre 2026, l’intervention pour SARL Lemoine, entreprise de peinture en France, a porté sur les diagnostics LeadFlow AI et EchoFlow AI et un test WhatsApp limité : qualification, suivi, transfert humain et relances J+2/J+5 validées. Ce cas ne démontre pas une connexion CRM bidirectionnelle ni une intégration Tactidevis. Aucun résultat chiffré n’est revendiqué.</p>
 <p><a href="/#temoignages">Lire le cas et sa recommandation publique</a> · <a href="/methode-happi-el-system">Consulter la méthode HAPPI-EL SYSTEM™</a> · <a href="/qualification-suivi-demandes-leadflow-cameroun">Guide de qualification des demandes</a>.</p></section>
+<section id="crm-natif" aria-labelledby="crm-natif-titre">
+<h2 id="crm-natif-titre">Un CRM et des automatisations dans HAPPI-EL OS</h2>
+<p>Le workspace de HAPPI-EL et de ses clients est HAPPI-EL OS. Le CRM intégré organise les contacts, les affaires et les tâches ; les modèles sectoriels adaptent les étapes et les champs au métier. Le moteur natif prévoit des étapes d’attente, des messages à préparer, des validations humaines et des traces d’exécution.</p>
+<p>La connexion WhatsApp est gérée depuis l’espace entreprise. Sa disponibilité dépend du numéro relié, des accès, des règles de messagerie et des fonctions activées. La présence d’une fonction dans le logiciel ne remplace pas un test de réception du parcours complet pour votre entreprise.</p>
+<p><a href="/fonctionnalites-happi-el-os">Voir les captures réelles du CRM et des automatisations</a> · <a href="/securite-gouvernance-happi-el-os">Voir les contrôles d’accès et la gouvernance</a> · <a href="https://os.happi-el-consulting.com/abonnements">Consulter les abonnements HAPPI-EL OS</a>.</p>
+<p>Le test ci-dessous est une <strong>archive de prototype e-mail du 19 octobre 2026</strong>. Il explique l’origine de certaines règles de suivi ; il ne décrit pas l’architecture actuelle du SaaS et ne prouve pas une livraison WhatsApp complète.</p>
+</section>
 <section id="demonstration-crm" aria-labelledby="demo-crm-titre" class="demo-proof">
 <span class="eyebrow">Démonstration interne · données fictives</span>
 <h2 id="demo-crm-titre">Suivi commercial contrôlé : une démonstration CRM avec validation humaine</h2>
