@@ -1,6 +1,8 @@
 # HAPPI-EL CONSULTING
 
-> Cabinet de conseil basé à Douala, Cameroun, fondé par Emmanuel Fomba. Spécialisé en systèmes de croissance et d'opérations augmentés par l'IA pour les PME au Cameroun et en Afrique francophone, ouvert à l'international.
+> Cabinet de conseil basé à Douala, Cameroun, fondé par Emmanuel Fomba. Spécialisé en systèmes de croissance et d'opérations augmentés par l'IA pour les PME au Cameroun et en Afrique francophone, et en pilotage exécutif (tableau de bord du DG, diagnostic exécutif avec décision GO / NO-GO) pour les directions générales, notamment dans le transport et la logistique. Ouvert à l'international.
+
+Dernière mise à jour de ce fichier : 1er novembre 2026.
 
 ## Offres (parcours en quatre temps, tarifs HT indicatifs jusqu'en décembre 2026)
 1. Diagnostiquer
@@ -23,12 +25,18 @@
 - [EchoFlow AI](https://happi-el-consulting.com/visibilite-preuves-expertise-echoflow-cameroun) : visibilité dans les moteurs de recherche et de réponse IA, 100 000 FCFA puis 50 000 FCFA/mois ; aucune citation garantie. Pack LeadFlow + EchoFlow : 200 000 FCFA puis 130 000 FCFA/mois.
 
 ## Secteurs accompagnés
-- [Transport & logistique](https://happi-el-consulting.com/sales-operating-system-transport-logistique-cameroun)
+- [Transport & logistique](https://happi-el-consulting.com/sales-operating-system-transport-logistique-cameroun) : CRM et cotations, flotte et voyages (véhicules, chauffeurs, documents à échéance, immobilisations, quantités chargées et livrées), sécurité HSE, marge et facturation par voyage, tableau de bord du DG. Sales OS Logistique 2 200 000 FCFA.
+- [Tableau de bord du DG d'une entreprise de transport](https://happi-el-consulting.com/tableau-de-bord-dg-transport-logistique-cameroun) : les 12 indicateurs (ventes, pipeline pondéré, taux de gain, livraisons à l'heure et complètes, utilisation de la flotte, attente au chargement, incidents graves, jours sans arrêt, documents expirés, marge par voyage, voyages non facturés, délai de paiement) avec définition, calcul et source ; aperçu illustratif aux données fictives.
+- [Suivi des devis en transport et logistique](https://happi-el-consulting.com/suivi-devis-transport-logistique-cameroun) : guide méthodologique et grille de cinq cotations.
 - [Immobilier & BTP](https://happi-el-consulting.com/sales-operating-system-btp-immobilier-cameroun)
 - [Cliniques privées](https://happi-el-consulting.com/careflow-ai-cliniques-privees-cameroun)
 - [Cabinets juridiques](https://happi-el-consulting.com/jurisflow-ai-cabinets-juridiques-cameroun)
-- [Diagnostic exécutif transport, logistique et BTP](https://happi-el-consulting.com/diagnostic-executif-transport-logistique-btp-cameroun) : atelier de découverte, cartographie de l'existant, tableau des responsabilités, registre des exceptions, mesure de départ, organisation cible, feuille de route 30/60/90 jours ; 10 à 15 jours ouvrés indicatifs ; dès 450 000 FCFA.
+- [Diagnostic exécutif transport, logistique et BTP](https://happi-el-consulting.com/diagnostic-executif-transport-logistique-btp-cameroun) : version PME (un processus prioritaire, 10 à 15 jours ouvrés indicatifs, dès 450 000 FCFA) et [Executive Growth Diagnostic™](https://happi-el-consulting.com/diagnostic-executif-transport-logistique-btp-cameroun#executive-growth-diagnostic) pour les directions générales : 15 jours, six livrables (état actuel, carte des frictions, indicateurs du DG, architecture cible, dossier de rentabilité avec scénario prudent, feuille de route 90 jours), registres de preuves, hypothèses et contradictions, dossier de préparation sur 8 dimensions avec règle de non-compensation, note de décision GO, GO conditionnel ou NO-GO ; sur devis après un échange de cadrage de 45 minutes ; aucun gain garanti. Un pilote de 90 jours éventuel franchit cinq points de passage.
+- [Suivi des demandes, visites et devis en BTP et immobilier](https://happi-el-consulting.com/suivi-demandes-visites-devis-btp-immobilier-cameroun)
 - [PME aux systèmes complexes](https://happi-el-consulting.com/diagnostic-pme-services-cameroun)
+- [Business Operating System pour PME : processus et responsabilités](https://happi-el-consulting.com/business-operating-system-pme-processus-responsabilites)
+- [Accueil administratif d'une clinique avec CareFlow AI](https://happi-el-consulting.com/accueil-administratif-clinique-careflow-cameroun)
+- [Sécurité de CareFlow AI](https://happi-el-consulting.com/careflow-securite)
 
 ## Preuves de méthode
 - [Baseline de visibilité IA](https://happi-el-consulting.com/etude-visibilite-ia-cameroun-2026): Étude réelle, 9 questions d'acheteur testées sur ChatGPT, Claude et Gemini.
