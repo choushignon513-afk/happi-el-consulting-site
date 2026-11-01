@@ -39,7 +39,8 @@ Dernière mise à jour de ce fichier : 1er novembre 2026.
 - [Sécurité de CareFlow AI](https://happi-el-consulting.com/careflow-securite)
 
 ## Preuves de méthode
-- [Baseline de visibilité IA](https://happi-el-consulting.com/etude-visibilite-ia-cameroun-2026): Étude réelle, 9 questions d'acheteur testées sur ChatGPT, Claude et Gemini.
+- [Visibilité IA au Cameroun, avant / après](https://happi-el-consulting.com/etude-visibilite-ia-cameroun-2026) : mêmes 9 questions d'acheteur ; septembre 2026 : 0 citation sur ChatGPT, Claude et Gemini ; 1er novembre 2026 : 4/9 sur ChatGPT, 3/9 sur Gemini, Claude non mesuré ; méthode et limites publiées.
+- [Comment choisir un consultant en automatisation IA au Cameroun](https://happi-el-consulting.com/comment-choisir-consultant-automatisation-ia-cameroun) : 10 critères vérifiables (diagnostic, preuves, prix en FCFA, mesure de départ, loi n° 2024/017 sur les données personnelles, contrôle humain, réversibilité, canaux locaux, secteur, promesses honnêtes), questions à poser et signaux d'alerte.
 - [Prix de l'automatisation à Douala](https://happi-el-consulting.com/prix-automatisation-pme-douala-2026): Grille tarifaire réelle 2026.
 - [Méthodologie Baseline J0](https://happi-el-consulting.com/methodologie-baseline-j0-careflow)
 - [Agence ou système HAPPI-EL ?](https://happi-el-consulting.com/comparatif-agence-classique-happi-el)
