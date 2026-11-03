@@ -31,7 +31,10 @@ export default async (req) => {
   const email = nettoie(payload.email, 150);
   // "ebook" = capture depuis la ressource Freelancing IA (HAPPI-EL Academy) : pas de score,
   // simple mise en relation. Toute autre valeur (ou absence) suit le circuit diagnostic /20 existant.
-  const estEbook = nettoie(payload.source, 30) === "ebook";
+  // "conformite" = liste des obligations de la loi n° 2024/017 (guide du site) : même circuit, sans score.
+  const sourceRessource = nettoie(payload.source, 30);
+  const estEbook = sourceRessource === "ebook" || sourceRessource === "conformite";
+  const libelleRessource = sourceRessource === "conformite" ? "liste des obligations de la loi n° 2024/017 (guide conformité)" : "ressource Freelancing IA (HAPPI-EL Academy)";
   const score = Number(payload.score);
 
   if (!fullName || !emailValide(email)) return json(400, { error: "champs_invalides" });
@@ -58,7 +61,7 @@ export default async (req) => {
     hs_lead_status: qualifie ? "NEW" : "OPEN",
     message: estEbook
       ? [
-          "Source : téléchargement/intérêt ressource Freelancing IA (HAPPI-EL Academy)",
+          "Source : téléchargement/intérêt " + libelleRessource,
           "Page d'origine : " + nettoie(payload.pageUri, 200)
         ].join("\n")
       : [
@@ -77,7 +80,7 @@ export default async (req) => {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-happiel-cle": OS_SECRET },
         body: JSON.stringify({
-          source: estEbook ? "ebook" : "diagnostic",
+          source: estEbook ? sourceRessource : "diagnostic",
           fullName, email,
           phone: nettoie(payload.phone, 30),
           company: nettoie(payload.company, 150),
