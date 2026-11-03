@@ -16,19 +16,27 @@
   for = "/index.html"
 
   [headers.values]
-    Cache-Control = "no-cache, no-store, must-revalidate"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/careflow.html"
 
   [headers.values]
-    Cache-Control = "no-cache, no-store, must-revalidate"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/careflow-securite.html"
 
   [headers.values]
-    Cache-Control = "no-cache, no-store, must-revalidate"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Images, vidéos et icônes : gardées 1 jour par le navigateur puis revalidées (noms de fichiers non versionnés).
+# « no-store » sur les pages a été retiré : il empêchait le retour arrière instantané (cache aller-retour du navigateur).
+[[headers]]
+  for = "/assets/*"
+
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
 
 # Ancienne copie de la page BTP-Immobilier : redirection permanente vers la page de référence (conserve le référencement).
 [[redirects]]
