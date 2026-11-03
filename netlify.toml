@@ -19,12 +19,6 @@
     Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
-  for = "/careflow.html"
-
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-[[headers]]
   for = "/careflow-securite.html"
 
   [headers.values]
@@ -44,6 +38,19 @@
 
   [headers.values]
     Content-Type = "text/vtt; charset=utf-8"
+
+# Ancienne page CareFlow (doublon) : redirection permanente vers la page de référence (évite deux pages en concurrence).
+[[redirects]]
+  from = "/careflow"
+  to = "/careflow-ai-cliniques-privees-cameroun"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/careflow.html"
+  to = "/careflow-ai-cliniques-privees-cameroun"
+  status = 301
+  force = true
 
 # Ancienne copie de la page BTP-Immobilier : redirection permanente vers la page de référence (conserve le référencement).
 [[redirects]]
