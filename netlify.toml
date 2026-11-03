@@ -38,6 +38,13 @@
   [headers.values]
     Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
 
+# Sous-titres des vidéos (WebVTT) : type exact pour tous les navigateurs.
+[[headers]]
+  for = "/assets/*.vtt"
+
+  [headers.values]
+    Content-Type = "text/vtt; charset=utf-8"
+
 # Ancienne copie de la page BTP-Immobilier : redirection permanente vers la page de référence (conserve le référencement).
 [[redirects]]
   from = "/sales-operating-system-btp-immobilier-cameroun-1"
