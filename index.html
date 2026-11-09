@@ -471,7 +471,7 @@ input,select,textarea{font-size:16px!important}button,.btn{min-height:44px}
 <span>J’accepte que mes informations et mon score soient transmis à HAPPI-EL CONSULTING dans le CRM HAPPI-EL OS afin de traiter ma demande. Aucune information médicale sensible ne doit être saisie.</span>
 </label>
 <button type="submit" class="btn light">Transmettre ma demande qualifiée ↗</button>
-<p class="tiny">Votre diagnostic /20 doit être complété avant l’envoi. Le CRM crée ou met à jour votre contact sans créer automatiquement de transaction.</p>
+<p class="tiny">Le diagnostic /20 est recommandé pour affiner l’orientation, mais n’est pas obligatoire pour envoyer cette demande. Le CRM crée ou met à jour votre contact sans créer automatiquement de transaction.</p>
 <p class="brief-status" id="brief-status" role="status" aria-live="polite">
 </p>
 </form>
@@ -1193,7 +1193,7 @@ document.querySelector('#brief').addEventListener('submit',async e=>{
   e.preventDefault();
   const form=e.currentTarget,status=document.querySelector('#brief-status'),button=form.querySelector('button[type="submit"]');
   status.classList.remove('error');status.textContent='';
-  if(!qualificationData){status.classList.add('error');status.textContent='Complétez d’abord le diagnostic stratégique /20.';document.querySelector('#qualification').scrollIntoView({behavior:'smooth'});return}
+  if(!qualificationData){qualificationData={sector:'',score:null,level:'Non réalisé',service:'',answers:null};qualificationSummary='Diagnostic non réalisé (demande directe, sans score)'}
   const waWindow=window.open('','_blank');
   const data=new FormData(form),params=new URLSearchParams(location.search),utm={};
   ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(key=>{if(params.get(key))utm[key]=params.get(key)});

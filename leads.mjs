@@ -35,13 +35,17 @@ export default async (req) => {
   const sourceRessource = nettoie(payload.source, 30);
   const estEbook = sourceRessource === "ebook" || sourceRessource === "conformite";
   const libelleRessource = sourceRessource === "conformite" ? "liste des obligations de la loi n° 2024/017 (guide conformité)" : "ressource Freelancing IA (HAPPI-EL Academy)";
-  const score = Number(payload.score);
+  // Un score peut être absent (null) sur le circuit "diagnostic" lui-même : c'est le cas
+  // du raccourci "Vous avez déjà un besoin précis ?" (contact direct sans passer par le
+  // questionnaire /20). Ce n'est pas une erreur de saisie — ne pas le rejeter comme tel.
+  const scoreFourni = payload.score !== null && payload.score !== undefined && payload.score !== "";
+  const score = scoreFourni ? Number(payload.score) : null;
 
   if (!fullName || !emailValide(email)) return json(400, { error: "champs_invalides" });
   if (!payload.consent) return json(400, { error: "consentement_requis" });
-  if (!estEbook && (!Number.isFinite(score) || score < 0 || score > 20)) return json(400, { error: "score_invalide" });
+  if (!estEbook && scoreFourni && (!Number.isFinite(score) || score < 0 || score > 20)) return json(400, { error: "score_invalide" });
 
-  const qualifie = !estEbook && score > SEUIL_QUALIFICATION;
+  const qualifie = !estEbook && scoreFourni && score > SEUIL_QUALIFICATION;
   const [prenom, ...reste] = fullName.split(" ");
   const nomFamille = reste.join(" ") || prenom;
 
@@ -62,6 +66,13 @@ export default async (req) => {
     message: estEbook
       ? [
           "Source : téléchargement/intérêt " + libelleRessource,
+          "Page d'origine : " + nettoie(payload.pageUri, 200)
+        ].join("\n")
+      : !scoreFourni
+      ? [
+          "Diagnostic HAPPI-EL /20 : non réalisé (contact direct via le raccourci \"besoin précis\")",
+          "Priorité indiquée : " + nettoie(payload.recommendedService, 100),
+          "Enjeu exprimé : " + nettoie(payload.challenge, 400),
           "Page d'origine : " + nettoie(payload.pageUri, 200)
         ].join("\n")
       : [
