@@ -16,6 +16,34 @@ const json = (status, body) => new Response(JSON.stringify(body), { status, head
 const nettoie = (s, max = 500) => String(s ?? "").trim().slice(0, max);
 const emailValide = e => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
 
+
+const DISCOVERY = new Set(["chatgpt","perplexity","autre_ia","google","linkedin","recommandation","autre","inconnu"]);
+const DECISION = new Set(["recommandation_ia","video","article","temoignage","recommandation_humaine","autre"]);
+
+function observedArrival(payload) {
+  let host = "";
+  try {
+    const referrer = new URL(nettoie(payload.referrer, 1000));
+    if (referrer.protocol === "https:" || referrer.protocol === "http:") host = referrer.hostname.toLowerCase();
+  } catch { /* A referrer is not always available. */ }
+  const is = (domain) => host === domain || host.endsWith("." + domain);
+  const medium = nettoie(payload.utm?.utm_medium, 40).toLowerCase();
+  if (["cpc", "ppc", "paid", "paid_social", "paid_search", "cpm"].includes(medium)) return "campagne_payante_declaree";
+  if (is("chatgpt.com") || is("chat.openai.com")) return "chatgpt";
+  if (is("perplexity.ai")) return "perplexity";
+  if (["google.com", "google.cm", "google.fr", "google.co.uk"].some(is)) return "google_referent";
+  if (is("linkedin.com")) return "linkedin";
+  if (is("happi-el-consulting.com")) return "inconnu";
+  return host ? "autre_referent" : "inconnu";
+}
+
+function pilotInfluence(payload) {
+  const discovery = nettoie(payload.influenceDiscovery, 40);
+  const decision = Array.isArray(payload.influenceDecision)
+    ? [...new Set(payload.influenceDecision.slice(0, 12).filter((v) => DECISION.has(v)))] : [];
+  return { arrival: observedArrival(payload), discovery: DISCOVERY.has(discovery) ? discovery : undefined, decision };
+}
+
 export default async (req) => {
   if (req.method !== "POST") return json(405, { error: "methode" });
   if (!HUBSPOT_TOKEN && !OS_SECRET) return json(500, { error: "crm_non_configure" });
@@ -97,11 +125,12 @@ export default async (req) => {
           company: nettoie(payload.company, 150),
           website: nettoie(payload.website, 200),
           sector: nettoie(payload.sector, 60),
-          score: estEbook ? undefined : score,
+          score: estEbook || !scoreFourni ? undefined : score,
           level: nettoie(payload.level, 40),
           recommendedService: nettoie(payload.recommendedService, 100),
           challenge: nettoie(payload.challenge, 400),
           pageUri: nettoie(payload.pageUri, 200),
+          influence: !estEbook && Object.hasOwn(payload, 'influenceDecision') ? pilotInfluence(payload) : undefined,
           consent: true
         }),
         signal: AbortSignal.timeout(6000)
