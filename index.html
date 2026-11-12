@@ -466,6 +466,28 @@ input,select,textarea{font-size:16px!important}button,.btn{min-height:44px}
 </textarea>
 <label class="hp-field" for="website-check">Laissez ce champ vide</label>
 <input class="hp-field" id="website-check" name="websiteCheck" tabindex="-1" autocomplete="off">
+<details style="grid-column:1/-1">
+<summary>Comment nous avez-vous connus ? (facultatif)</summary>
+<label for="influence-discovery">Où avez-vous entendu parler de HAPPI-EL pour la première fois ?</label>
+<select id="influence-discovery" name="influenceDiscovery"><option value="">Choisir une réponse</option>
+<option value="chatgpt">ChatGPT</option>
+<option value="perplexity">Perplexity</option>
+<option value="autre_ia">Autre assistant IA</option>
+<option value="google">Recherche Google</option>
+<option value="linkedin">LinkedIn</option>
+<option value="recommandation">Recommandation d’une personne</option>
+<option value="autre">Autre</option>
+<option value="inconnu">Je ne sais pas</option>
+</select>
+<fieldset><legend>Qu’est-ce qui vous a décidé à nous contacter ? Plusieurs réponses possibles.</legend>
+<label class="consent"><input type="checkbox" name="influenceDecision" value="recommandation_ia"><span>Une recommandation d’un assistant IA</span></label>
+<label class="consent"><input type="checkbox" name="influenceDecision" value="video"><span>Une vidéo ou une démonstration</span></label>
+<label class="consent"><input type="checkbox" name="influenceDecision" value="article"><span>Un article ou un guide</span></label>
+<label class="consent"><input type="checkbox" name="influenceDecision" value="temoignage"><span>Un témoignage ou un cas client</span></label>
+<label class="consent"><input type="checkbox" name="influenceDecision" value="recommandation_humaine"><span>Une recommandation personnelle</span></label>
+<label class="consent"><input type="checkbox" name="influenceDecision" value="autre"><span>Autre</span></label>
+</fieldset><p class="tiny">Ces réponses nous aident à améliorer notre parcours de contact.</p>
+</details>
 <label class="consent">
 <input id="crm-consent" type="checkbox" required>
 <span>J’accepte que mes informations et mon score soient transmis à HAPPI-EL CONSULTING dans le CRM HAPPI-EL OS afin de traiter ma demande. Aucune information médicale sensible ne doit être saisie.</span>
@@ -1197,7 +1219,7 @@ document.querySelector('#brief').addEventListener('submit',async e=>{
   const waWindow=window.open('','_blank');
   const data=new FormData(form),params=new URLSearchParams(location.search),utm={};
   ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(key=>{if(params.get(key))utm[key]=params.get(key)});
-  const payload={submissionId:crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random(),fullName:String(data.get('fullName')||''),email:String(data.get('email')||''),phone:String(data.get('phone')||''),company:String(data.get('company')||''),website:String(data.get('website')||''),interest:String(data.get('interest')||''),challenge:String(data.get('challenge')||''),websiteCheck:String(data.get('websiteCheck')||''),sector:qualificationData.sector,score:qualificationData.score,level:qualificationData.level,recommendedService:qualificationData.service,answers:qualificationData.answers,consent:document.querySelector('#crm-consent').checked,pageUri:location.href,referrer:document.referrer,utm};
+  const payload={submissionId:crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random(),fullName:String(data.get('fullName')||''),email:String(data.get('email')||''),phone:String(data.get('phone')||''),company:String(data.get('company')||''),website:String(data.get('website')||''),interest:String(data.get('interest')||''),challenge:String(data.get('challenge')||''),websiteCheck:String(data.get('websiteCheck')||''),sector:qualificationData.sector,score:qualificationData.score,level:qualificationData.level,recommendedService:qualificationData.service,answers:qualificationData.answers,consent:document.querySelector('#crm-consent').checked,pageUri:location.href,referrer:document.referrer,utm,influenceDiscovery:data.get('influenceDiscovery'),influenceDecision:data.getAll('influenceDecision')};
   const original=button.textContent;button.disabled=true;button.textContent='Transmission sécurisée…';status.textContent='Connexion au système de qualification…';
   try{
     const response=await fetch('/api/leads',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});
