@@ -133,7 +133,8 @@ export default async (req) => {
           influence: !estEbook && Object.hasOwn(payload, 'influenceDecision') ? pilotInfluence(payload) : undefined,
           consent: true
         }),
-        signal: AbortSignal.timeout(6000)
+        // L’écriture du prospect et de sa note peut dépasser six secondes à froid.
+        signal: AbortSignal.timeout(12000)
       });
       osOk = r.ok;
     } catch { osOk = false; }
