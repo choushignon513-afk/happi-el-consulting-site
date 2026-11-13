@@ -1224,14 +1224,14 @@ document.querySelector('#brief').addEventListener('submit',async e=>{
   try{
     const response=await fetch('/api/leads',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});
     const result=await response.json().catch(()=>({ok:false,message:'Réponse invalide du système.'}));
-    if(!response.ok||!result.ok)throw new Error(result.message||'Transmission impossible.');
-    status.textContent='Demande enregistrée dans le système. WhatsApp va s’ouvrir pour finaliser votre prise de contact.';
+    if(!response.ok||!result.ok||typeof result.reference!=='string'||!result.reference)throw new Error('Enregistrement non confirmé.');
+    status.textContent='Demande enregistrée dans HAPPI-EL OS. Référence : '+result.reference+'. WhatsApp va s’ouvrir si vous souhaitez compléter votre demande.';
     const msg='Bonjour Emmanuel, je viens de compléter la qualification HAPPI-EL CONSULTING.\n\nNom : '+payload.fullName+'\nEntreprise : '+payload.company+'\nPriorité : '+payload.interest+'\nEnjeu : '+payload.challenge+'\nQualification stratégique : '+qualificationSummary+(diagnosticSummary?'\nOrientation indicative : '+diagnosticSummary:'');
     if(waWindow){waWindow.location.href='https://wa.me/237693207431?text='+encodeURIComponent(msg);try{waWindow.opener=null}catch(_e){}}else{window.open('https://wa.me/237693207431?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer')}
     form.reset();
   }catch(error){
     status.classList.add('error');
-    status.textContent='Enregistrement automatique indisponible. Un message est préparé dans WhatsApp : appuyez sur Envoyer pour nous le transmettre.';
+    status.textContent='Enregistrement non confirmé par HAPPI-EL OS. Vous pouvez transmettre votre demande sur WhatsApp en appuyant sur Envoyer.';
     const msgSecours='Bonjour Emmanuel, je viens de compléter la qualification HAPPI-EL CONSULTING.\n\nNom : '+payload.fullName+'\nEntreprise : '+payload.company+'\nEmail : '+payload.email+'\nPriorité : '+payload.interest+'\nEnjeu : '+payload.challenge+'\nQualification stratégique : '+qualificationSummary+(diagnosticSummary?'\nOrientation indicative : '+diagnosticSummary:'');
     if(waWindow){waWindow.location.href='https://wa.me/237693207431?text='+encodeURIComponent(msgSecours);try{waWindow.opener=null}catch(_e){}}else{window.open('https://wa.me/237693207431?text='+encodeURIComponent(msgSecours),'_blank','noopener,noreferrer')}
   }
