@@ -1,14 +1,4 @@
-// HAPPI-EL CONSULTING — réception des leads du diagnostic /20
-// Règle : score > 8/20 => contact qualifié dans HubSpot + notification WhatsApp immédiate.
-//         score <= 8/20 => contact créé aussi, mais étiqueté "à nourrir", sans notification.
-// Variables d'environnement requises : HUBSPOT_TOKEN (Private App, scope crm.objects.contacts.write)
-// Aucune propriété personnalisée n'est nécessaire : tout est stocké dans des champs standards
-// (industry, message, lifecyclestage, hs_lead_status), disponibles sur tous les comptes HubSpot.
-
-const SEUIL_QUALIFICATION = 8;
-const HUBSPOT_TOKEN = process.env.HUBSPOT_TOKEN;
-// CRM interne HAPPI-EL OS (os.happi-el-consulting.com) : chaque prospect y est aussi enregistré.
-// HubSpot reste alimenté pendant la transition ; il devient facultatif.
+// Réception des demandes du site : HAPPI-EL OS est la source de confirmation.
 const OS_URL = "https://os.happi-el-consulting.com/api/prospects/entrant";
 const OS_SECRET = process.env.PROSPECTS_INGEST_SECRET;
 
@@ -46,7 +36,7 @@ function pilotInfluence(payload) {
 
 export default async (req) => {
   if (req.method !== "POST") return json(405, { error: "methode" });
-  if (!HUBSPOT_TOKEN && !OS_SECRET) return json(500, { error: "crm_non_configure" });
+  if (!OS_SECRET) return json(500, { error: "crm_non_configure" });
 
   let payload;
   try { payload = await req.json(); } catch { return json(400, { error: "json" }); }
@@ -62,7 +52,6 @@ export default async (req) => {
   // "conformite" = liste des obligations de la loi n° 2024/017 (guide du site) : même circuit, sans score.
   const sourceRessource = nettoie(payload.source, 30);
   const estEbook = sourceRessource === "ebook" || sourceRessource === "conformite";
-  const libelleRessource = sourceRessource === "conformite" ? "liste des obligations de la loi n° 2024/017 (guide conformité)" : "ressource Freelancing IA (HAPPI-EL Academy)";
   // Un score peut être absent (null) sur le circuit "diagnostic" lui-même : c'est le cas
   // du raccourci "Vous avez déjà un besoin précis ?" (contact direct sans passer par le
   // questionnaire /20). Ce n'est pas une erreur de saisie — ne pas le rejeter comme tel.
@@ -73,48 +62,7 @@ export default async (req) => {
   if (!payload.consent) return json(400, { error: "consentement_requis" });
   if (!estEbook && scoreFourni && (!Number.isFinite(score) || score < 0 || score > 20)) return json(400, { error: "score_invalide" });
 
-  const qualifie = !estEbook && scoreFourni && score > SEUIL_QUALIFICATION;
-  const [prenom, ...reste] = fullName.split(" ");
-  const nomFamille = reste.join(" ") || prenom;
-
-  // Aucune propriété personnalisée requise : tout tient dans des champs HubSpot
-  // standards, présents sur tous les comptes quel que soit l'abonnement.
-  // NB : "lifecyclestage" n'est pas utilisé ici — HubSpot le réinitialise souvent
-  // automatiquement via ses propres workflows internes. "hs_lead_status" est le
-  // signal fiable pour distinguer les leads qualifiés (NEW) des autres (OPEN).
-  const properties = {
-    firstname: prenom,
-    lastname: nomFamille,
-    email,
-    phone: nettoie(payload.phone, 30),
-    company: nettoie(payload.company, 150),
-    website: nettoie(payload.website, 200),
-    industry: nettoie(payload.sector, 60),
-    hs_lead_status: qualifie ? "NEW" : "OPEN",
-    message: estEbook
-      ? [
-          "Source : téléchargement/intérêt " + libelleRessource,
-          "Page d'origine : " + nettoie(payload.pageUri, 200)
-        ].join("\n")
-      : !scoreFourni
-      ? [
-          "Diagnostic HAPPI-EL /20 : non réalisé (contact direct via le raccourci \"besoin précis\")",
-          "Priorité indiquée : " + nettoie(payload.recommendedService, 100),
-          "Enjeu exprimé : " + nettoie(payload.challenge, 400),
-          "Page d'origine : " + nettoie(payload.pageUri, 200)
-        ].join("\n")
-      : [
-          "Diagnostic HAPPI-EL /20 : " + score + "/20 — " + nettoie(payload.level, 40),
-          "Offre recommandée : " + nettoie(payload.recommendedService, 100),
-          "Enjeu exprimé : " + nettoie(payload.challenge, 400),
-          "Page d'origine : " + nettoie(payload.pageUri, 200)
-        ].join("\n")
-  };
-
-  // 1. CRM interne HAPPI-EL OS
-  let osOk = false;
-  if (OS_SECRET) {
-    try {
+  try {
       const r = await fetch(OS_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-happiel-cle": OS_SECRET },
@@ -136,34 +84,15 @@ export default async (req) => {
         // L’écriture du prospect et de sa note peut dépasser six secondes à froid.
         signal: AbortSignal.timeout(12000)
       });
-      osOk = r.ok;
-    } catch { osOk = false; }
+      const receipt = await r.json();
+      if (!r.ok || receipt?.ok !== true || typeof receipt.reference !== "string" ||
+          !/^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(receipt.reference)) {
+        return json(502, { error: "crm_confirmation_indisponible" });
+      }
+      return json(200, { ok: true, reference: receipt.reference, qualifie: receipt.qualifie === true });
+  } catch {
+    return json(502, { error: "crm_confirmation_indisponible" });
   }
-
-  // 2. HubSpot (transition) — facultatif
-  let hubspotOk = false;
-  let mieAJourEchouee = false;
-  if (HUBSPOT_TOKEN) {
-    const hs = await fetch("https://api.hubapi.com/crm/v3/objects/contacts", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + HUBSPOT_TOKEN },
-      body: JSON.stringify({ properties })
-    }).catch(() => ({ ok: false, status: 0 }));
-
-    // Contact déjà existant (409) : on tente une mise à jour au lieu d'échouer
-    if (hs.status === 409) {
-      const patch = await fetch("https://api.hubapi.com/crm/v3/objects/contacts/" + encodeURIComponent(email) + "?idProperty=email", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + HUBSPOT_TOKEN },
-        body: JSON.stringify({ properties })
-      }).catch(() => null);
-      if (!patch || !patch.ok) mieAJourEchouee = true;
-    }
-    hubspotOk = hs.ok || (hs.status === 409 && !mieAJourEchouee);
-  }
-
-  if (!osOk && !hubspotOk) return json(502, { error: "crm_echec" });
-  return json(200, { ok: true, qualifie, miseAJourEchouee: mieAJourEchouee });
 };
 
 // 5 soumissions/minute/IP : large pour un vrai visiteur, dissuasif pour un script qui viserait
