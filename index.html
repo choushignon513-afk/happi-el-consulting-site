@@ -1,44 +1,6 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<!-- Meta Pixel : chargé uniquement après consentement -->
-<script>
-(function(){
-  const CONSENT_KEY='hec_meta_tracking_consent';
-  const PIXEL_ID='1072898865555552';
-  window.hecLoadMetaPixel=function(){
-    if(window.__hecMetaLoaded)return;
-    window.__hecMetaLoaded=true;
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){
-      n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)
-    };if(!f._fbq)f._fbq=n;n.push=n;n.loaded=true;n.version='2.0';n.queue=[];
-    t=b.createElement(e);t.async=true;t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/fr_FR/fbevents.js');
-    fbq('init',PIXEL_ID);
-    fbq('track','PageView');
-  };
-  try{if(localStorage.getItem(CONSENT_KEY)==='accepted')window.hecLoadMetaPixel()}catch(_e){}
-})();
-</script>
-<!-- Google Ads : chargé uniquement après consentement -->
-<script>
-(function(){
-  const CONSENT_KEY='hec_meta_tracking_consent';
-  window.hecLoadGoogleAds=function(){
-    if(window.__hecGoogleLoaded)return;
-    window.__hecGoogleLoaded=true;
-    window.dataLayer=window.dataLayer||[];
-    window.gtag=window.gtag||function(){dataLayer.push(arguments)};
-    const tag=document.createElement('script');
-    tag.async=true;
-    tag.src='https://www.googletagmanager.com/gtag/js?id=AW-18421055573';
-    document.head.appendChild(tag);
-    gtag('js', new Date());
-    gtag('config', 'AW-18421055573');
-  };
-  try{if(localStorage.getItem(CONSENT_KEY)==='accepted')window.hecLoadGoogleAds()}catch(_e){}
-})();
-</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Consultant automatisation IA à Douala | HAPPI-EL CONSULTING</title>
@@ -105,6 +67,16 @@ dialog{border:1px solid #bcb3a2;background:var(--chalk);padding:45px;box-shadow:
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}.reveal.is-visible{opacity:1;transform:none}
 @media(max-width:1000px){.hero-grid{grid-template-columns:1fr 42%;gap:36px}.cards{grid-template-columns:1fr}.card{min-height:0}.card .num{margin-bottom:35px}.card h3{margin-top:0}.steps{grid-template-columns:repeat(2,1fr)}.step{min-height:230px}.strip .wrap{flex-wrap:wrap;padding-block:26px}.founder{gap:50px}.navlinks>a:first-child{display:none}}
 @media(max-width:720px){header{background:rgba(7,26,24,.97)}.menu{display:block;color:var(--chalk);border:1px solid rgba(255,255,255,.28);background:transparent;padding:9px 13px}.navlinks{top:76px;background:var(--dark);border-bottom-color:rgba(255,255,255,.12);padding:28px}.navlinks>a:first-child{display:block}.hero{min-height:auto;padding-top:62px}.hero-grid{grid-template-columns:1fr}.hero-top{align-items:flex-start}.hero h1{font-size:clamp(3.7rem,17vw,5.2rem);line-height:.9}.art{margin-top:28px;aspect-ratio:1}.hero-foot{font-size:.63rem}.strip .wrap{display:grid;grid-template-columns:1fr 1fr;min-height:auto}.strip .eyebrow{grid-column:1/-1}.section-head{display:block}.section-head p{margin-top:26px}.cards,.cases,.diag-grid,.founder,.contact-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.step{min-height:auto;border-right:0}.monogram{height:340px}.founder blockquote{font-size:1.75rem}.contact-grid h2{font-size:3.8rem}.footer-links{flex-wrap:wrap}.reveal{transform:translateY(16px)}}
+@media(max-width:720px){
+  .hero{padding:28px 22px 32px;overflow:clip}
+  .hero-top{gap:12px;padding-bottom:12px;flex-wrap:wrap}
+  .hero-grid{grid-template-columns:minmax(0,1fr);gap:24px;margin-top:22px}
+  .hero-grid>*{min-width:0}
+  .hero h1{font-size:clamp(2rem,8.2vw,3.25rem);margin:0 0 16px;letter-spacing:-.045em}
+  .hero .lead{margin:0;line-height:1.55}
+  .hero .actions{margin-top:20px;gap:10px}
+  .hero .art{min-width:0;width:100%}
+}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.signal{animation:none}}
 </style>
 <style>
@@ -494,8 +466,8 @@ input,select,textarea{font-size:16px!important}button,.btn{min-height:44px}
 </label>
 <button type="submit" class="btn light">Transmettre ma demande qualifiée ↗</button>
 <p class="tiny">Le diagnostic /20 est recommandé pour affiner l’orientation, mais n’est pas obligatoire pour envoyer cette demande. Le CRM crée ou met à jour votre contact sans créer automatiquement de transaction.</p>
-<p class="brief-status" id="brief-status" role="status" aria-live="polite">
-</p>
+<p class="brief-status" id="brief-status" role="status" aria-live="polite"></p>
+<a class="textlink" id="brief-whatsapp" href="https://wa.me/237693207431" target="_blank" rel="noopener noreferrer" hidden>Continuer sur WhatsApp ↗</a>
 </form>
 </div>
 </section>
@@ -1166,7 +1138,7 @@ const menu=document.querySelector('.menu'),links=document.querySelector('.navlin
 menu.addEventListener('click',()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'Fermer':'Menu'});
 links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='Menu'}));
 document.querySelectorAll('[data-offer]').forEach(a=>a.addEventListener('click',()=>{document.querySelector('#interest').value=a.dataset.offer}));
-let qualificationSummary='',diagnosticSummary='',qualificationData=null;
+let qualificationData=null;
 document.querySelector('#qualification-form').addEventListener('submit',e=>{
   e.preventDefault();
   const sector=document.querySelector('#qual-sector').value,service=document.querySelector('#qual-priority').value,inputs=[...document.querySelectorAll('.score-input')];
@@ -1192,7 +1164,6 @@ document.querySelector('#qualification-form').addEventListener('submit',e=>{
   else if(score<=16){level='Pilote';title='Prêt pour un pilote maîtrisé';copy='Vos bases permettent d’engager un périmètre pilote, avec des critères de succès, des garde-fous et une documentation définis dès le départ.'}
   else{level='Accélération';title='Prêt à optimiser et déployer';copy='Votre maturité permet de concentrer l’intervention sur l’intégration, la performance et le passage à l’échelle, sans perdre la gouvernance humaine.'}
   qualificationData={sector,service,answers:values,score,level};
-  qualificationSummary='Score '+score+'/20 — '+level+' | Secteur : '+sector+' | Offre recommandée : '+service;
   document.querySelector('#score-value').replaceChildren(document.createTextNode(String(score)),Object.assign(document.createElement('small'),{textContent:'/20'}));
   document.querySelector('#score-orb').style.setProperty('--score-angle',(score/20*360)+'deg');
   document.querySelector('#qual-title').textContent=title;
@@ -1210,64 +1181,49 @@ const diagForm=document.querySelector('#diagnostic-form');if(diagForm)diagForm.a
   if(vals.includes(0)){box.textContent='Répondez aux trois questions pour obtenir votre priorité.';document.getElementById(['q1','q2','q3'][vals.indexOf(0)]).focus();return}
   const titles=['Structurer votre suivi commercial','Clarifier vos processus','Fiabiliser votre pilotage'],texts=['Centralisez les opportunités, définissez les étapes de vente et attribuez une prochaine action à chaque prospect.','Documentez un processus fréquent, ses responsables et ses exceptions avant de choisir les tâches à automatiser.','Définissez quelques indicateurs reliés à vos objectifs, leurs sources et une fréquence de revue.'];
   const min=Math.min(...vals),i=vals.indexOf(min);let title=min===3?'Tester une optimisation ciblée':titles[i],body=min===3?'Vos réponses indiquent des bases structurées. Choisissez un processus pilote, mesurez son fonctionnement actuel et testez une amélioration avec des critères de succès définis.':texts[i];
-  diagnosticSummary=title;box.replaceChildren();
+  box.replaceChildren();
   const h=document.createElement('h3');h.textContent=title;const p=document.createElement('p');p.textContent=body;const a=document.createElement('a');a.href='#contact';a.className='textlink';a.textContent='Approfondir cette priorité ↗';a.style.display='inline-block';box.append(h,p,a);
 });
 document.querySelector('#brief').addEventListener('submit',async e=>{
   e.preventDefault();
   const form=e.currentTarget,status=document.querySelector('#brief-status'),button=form.querySelector('button[type="submit"]');
+  if(button.disabled)return;
+  const whatsapp=document.querySelector('#brief-whatsapp');
+  whatsapp.hidden=true;
   status.classList.remove('error');status.textContent='';
-  if(!qualificationData){qualificationData={sector:'',score:null,level:'Non réalisé',service:'',answers:null};qualificationSummary='Diagnostic non réalisé (demande directe, sans score)'}
-  const waWindow=window.open('','_blank');
+  const qualification=qualificationData||{sector:'',score:null,level:'Non réalisé',service:'',answers:null};
   const data=new FormData(form),params=new URLSearchParams(location.search),utm={};
   ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(key=>{if(params.get(key))utm[key]=params.get(key)});
-  const payload={submissionId:crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random(),fullName:String(data.get('fullName')||''),email:String(data.get('email')||''),phone:String(data.get('phone')||''),company:String(data.get('company')||''),website:String(data.get('website')||''),interest:String(data.get('interest')||''),challenge:String(data.get('challenge')||''),websiteCheck:String(data.get('websiteCheck')||''),sector:qualificationData.sector,score:qualificationData.score,level:qualificationData.level,recommendedService:qualificationData.service,answers:qualificationData.answers,consent:document.querySelector('#crm-consent').checked,pageUri:location.href,referrer:document.referrer,utm,influenceDiscovery:data.get('influenceDiscovery'),influenceDecision:data.getAll('influenceDecision')};
+  const payload={submissionId:crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random(),fullName:String(data.get('fullName')||''),email:String(data.get('email')||''),phone:String(data.get('phone')||''),company:String(data.get('company')||''),website:String(data.get('website')||''),interest:String(data.get('interest')||''),challenge:String(data.get('challenge')||''),websiteCheck:String(data.get('websiteCheck')||''),sector:qualification.sector,score:qualification.score,level:qualification.level,recommendedService:qualification.service,answers:qualification.answers,consent:document.querySelector('#crm-consent').checked,pageUri:location.href,referrer:document.referrer,utm,influenceDiscovery:data.get('influenceDiscovery'),influenceDecision:data.getAll('influenceDecision')};
   const original=button.textContent;button.disabled=true;button.textContent='Transmission sécurisée…';status.textContent='Connexion au système de qualification…';
   try{
     const response=await fetch('/api/leads',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});
     const result=await response.json().catch(()=>({ok:false,message:'Réponse invalide du système.'}));
-    if(!response.ok||!result.ok||typeof result.reference!=='string'||!result.reference)throw new Error('Enregistrement non confirmé.');
-    status.textContent='Demande enregistrée dans HAPPI-EL OS. Référence : '+result.reference+'. WhatsApp va s’ouvrir si vous souhaitez compléter votre demande.';
-    const msg='Bonjour Emmanuel, je viens de compléter la qualification HAPPI-EL CONSULTING.\n\nNom : '+payload.fullName+'\nEntreprise : '+payload.company+'\nPriorité : '+payload.interest+'\nEnjeu : '+payload.challenge+'\nQualification stratégique : '+qualificationSummary+(diagnosticSummary?'\nOrientation indicative : '+diagnosticSummary:'');
-    if(waWindow){waWindow.location.href='https://wa.me/237693207431?text='+encodeURIComponent(msg);try{waWindow.opener=null}catch(_e){}}else{window.open('https://wa.me/237693207431?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer')}
+    if(!response.ok||!result.ok||typeof result.reference!=='string'||!/^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(result.reference))throw new Error('Enregistrement non confirmé.');
+    status.textContent='Demande enregistrée dans HAPPI-EL OS. Référence : '+result.reference+'.';
+    const message='Bonjour, je souhaite compléter ma demande HAPPI-EL CONSULTING. Référence : '+result.reference;
+    whatsapp.href='https://wa.me/237693207431?text='+encodeURIComponent(message);
+    whatsapp.hidden=false;
     form.reset();
   }catch(error){
     status.classList.add('error');
-    status.textContent='Enregistrement non confirmé par HAPPI-EL OS. Vous pouvez transmettre votre demande sur WhatsApp en appuyant sur Envoyer.';
-    const msgSecours='Bonjour Emmanuel, je viens de compléter la qualification HAPPI-EL CONSULTING.\n\nNom : '+payload.fullName+'\nEntreprise : '+payload.company+'\nEmail : '+payload.email+'\nPriorité : '+payload.interest+'\nEnjeu : '+payload.challenge+'\nQualification stratégique : '+qualificationSummary+(diagnosticSummary?'\nOrientation indicative : '+diagnosticSummary:'');
-    if(waWindow){waWindow.location.href='https://wa.me/237693207431?text='+encodeURIComponent(msgSecours);try{waWindow.opener=null}catch(_e){}}else{window.open('https://wa.me/237693207431?text='+encodeURIComponent(msgSecours),'_blank','noopener,noreferrer')}
+    status.textContent='Enregistrement non confirmé par HAPPI-EL OS. Votre saisie est conservée. Vous pouvez réessayer ou nous contacter sur WhatsApp.';
+    whatsapp.href='https://wa.me/237693207431?text='+encodeURIComponent('Bonjour, je souhaite échanger avec HAPPI-EL CONSULTING.');
+    whatsapp.hidden=false;
   }
   finally{button.disabled=false;button.textContent=original}
 });
 document.querySelector('#qualification-form').addEventListener('change',()=>{
- qualificationData=null;qualificationSummary='';document.querySelector('#qualification-result').hidden=true;
+ qualificationData=null;document.querySelector('#qualification-result').hidden=true;
 });
-document.querySelectorAll('[data-modal]').forEach(b=>b.addEventListener('click',()=>document.getElementById(b.dataset.modal).showModal()));
+document.addEventListener('click',e=>{
+  const button=e.target.closest('[data-modal]');
+  if(button)document.getElementById(button.dataset.modal)?.showModal();
+});
 document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>b.closest('dialog').close()));
 const anneeEl=document.querySelector('#year');if(anneeEl)anneeEl.textContent=new Date().getFullYear();
 const revealTargets=document.querySelectorAll('section .section-head,section .cards,section .steps,section .cases,section .qualifier-grid,section .diag-grid,section .founder,section .faq,section .contact-grid,section .growth-grid,section .proof-grid,section .recommend-grid');revealTargets.forEach(el=>el.classList.add('reveal'));if('IntersectionObserver'in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}}),{threshold:.12});revealTargets.forEach(el=>observer.observe(el))}else{revealTargets.forEach(el=>el.classList.add('is-visible'))}
 const shareButton=document.querySelector('#share-site'),shareFeedback=document.querySelector('#share-feedback'),shareUrl='https://happi-el-consulting.com/#ressource';shareButton.addEventListener('click',async()=>{try{if(navigator.share){await navigator.share({title:'HAPPI-EL CONSULTING — Freelancing IA',text:'Une ressource pour structurer une activité de Freelancing IA.',url:shareUrl});shareFeedback.textContent='Merci pour le partage.'}else if(navigator.clipboard){await navigator.clipboard.writeText(shareUrl);shareFeedback.textContent='Lien copié.'}else{shareFeedback.textContent='Lien à copier : '+shareUrl}}catch(error){if(error.name!=='AbortError')shareFeedback.textContent='Le partage n’a pas pu être ouvert.'}});const reviewUrl='https://happi-el-consulting.com/#recommandations',reviewLinkFeedback=document.querySelector('#review-link-feedback');document.querySelector('#copy-review-link').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(reviewUrl);reviewLinkFeedback.textContent='Lien d’avis copié. Vous pouvez maintenant l’envoyer à votre client.'}catch{reviewLinkFeedback.textContent='Lien à copier : '+reviewUrl}});document.querySelector('#review-form').addEventListener('submit',event=>{event.preventDefault();const form=new FormData(event.currentTarget),stage=form.get('stage'),rating=form.get('rating'),name=form.get('name').trim(),company=form.get('company').trim(),comment=form.get('comment').trim();const message='Bonjour Emmanuel, je souhaite proposer une recommandation vérifiée pour HAPPI-EL CONSULTING.\n\nMoment : '+stage+'\nNote : '+rating+'/5\nNom : '+name+'\nEntreprise / fonction : '+company+'\nCommentaire : '+comment+'\n\nJ’accepte d’être contacté(e) pour vérification. Toute publication nécessitera mon accord explicite.';window.open('https://wa.me/237693207431?text='+encodeURIComponent(message),'_blank','noopener,noreferrer')});const conversionDock=document.querySelector('#conversion-dock');const updateDock=()=>conversionDock.classList.toggle('visible',window.scrollY>650);addEventListener('scroll',updateDock,{passive:true});updateDock();if(matchMedia('(prefers-reduced-motion: reduce)').matches){const media=document.querySelector('.growth-media video');if(media){media.removeAttribute('autoplay');media.pause()}}
-</script>
-<script>
-(function(){
-  const KEY='hec_meta_tracking_consent';
-  const panel=document.getElementById('tracking-consent');
-  const settings=document.getElementById('tracking-settings');
-  const footerSettings=document.getElementById('footer-tracking-settings');
-  const readChoice=()=>{try{return localStorage.getItem(KEY)}catch(_e){return null}};
-  const saveChoice=value=>{try{localStorage.setItem(KEY,value)}catch(_e){}}
-  const openPanel=()=>{panel.classList.add('visible');document.getElementById('tracking-accept').focus()};
-  const closePanel=()=>panel.classList.remove('visible');
-  document.getElementById('tracking-accept').addEventListener('click',()=>{saveChoice('accepted');window.hecLoadMetaPixel();window.hecLoadGoogleAds();closePanel()});
-  document.getElementById('tracking-refuse').addEventListener('click',()=>{saveChoice('refused');closePanel();if(window.__hecMetaLoaded||window.__hecGoogleLoaded||window.__hecLinkedInLoaded)location.reload()});
-  settings.addEventListener('click',openPanel);
-  footerSettings.addEventListener('click',openPanel);
-  if(!readChoice())openPanel();
-  document.addEventListener('click',function(e){
-    const a=e.target.closest('a[href^="https://wa.me/237693207431"]');
-    if(a&&readChoice()==='accepted'&&typeof fbq==='function')fbq('track','Contact');
-  });
-})();
 </script>
 <div class="tracking-consent" id="tracking-consent" role="dialog" aria-labelledby="tracking-title" aria-describedby="tracking-copy">
   <p class="tracking-title" id="tracking-title">Mesure publicitaire</p>

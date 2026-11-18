@@ -13,11 +13,14 @@
   var LINKEDIN_PARTNER_ID = '11122153';
   var HEALTH_PAGE = /(careflow|clinique|sante|medical|patient)/i.test(location.pathname);
 
+  var sessionChoice;
   function choice() {
+    if (sessionChoice) return sessionChoice;
     try { return localStorage.getItem(KEY); } catch (e) { return null; }
   }
   function saveChoice(v) {
-    try { localStorage.setItem(KEY, v); } catch (e) { /* navigation privée stricte : choix non mémorisé */ }
+    sessionChoice = v;
+    try { localStorage.setItem(KEY, v); return true; } catch (e) { return false; }
   }
 
   function loadMeta() {
@@ -67,22 +70,11 @@
     })(window.lintrk);
   }
 
-  // Page d'accueil : ses chargeurs Meta et Google Ads (scripts intégrés) sont conservés ; on les prolonge
-  // pour que l'acceptation de la bannière charge aussi LinkedIn. Ailleurs, on fournit les nôtres.
-  var baseLoadMeta = typeof window.hecLoadMetaPixel === 'function' ? window.hecLoadMetaPixel : loadMeta;
-  window.hecLoadMetaPixel = function () {
-    if (!HEALTH_PAGE) baseLoadMeta.apply(this, arguments);
-    loadLinkedIn();
-  };
-  if (typeof window.hecLoadGoogleAds !== 'function') window.hecLoadGoogleAds = loadGoogleAds;
-  window.hecLoadLinkedIn = loadLinkedIn;
-
   function loadAll() {
-    window.hecLoadMetaPixel();
-    window.hecLoadGoogleAds();
+    loadMeta();
+    loadGoogleAds();
+    loadLinkedIn();
   }
-
-  if (choice() === 'accepted') loadAll();
 
   // Conversions Google Ads (jamais sur les pages santé, jamais sans accord).
   var GOOGLE_CONVERSIONS = {
@@ -113,9 +105,12 @@
           request.then(function (response) {
             if (!response || !response.ok) return;
             return response.clone().json().then(function (body) {
-              // Le serveur répond aussi { ok: true } au piège anti-robots (champ caché rempli) : seule une vraie
-              // demande enregistrée contient « miseAJourEchouee ». Sans ce contrôle, un robot compterait comme prospect.
-              if (body && body.ok === true && Object.prototype.hasOwnProperty.call(body, 'miseAJourEchouee')) { googleConversion(GOOGLE_CONVERSIONS.lead); metaLead(); }
+              // Un reçu CRM confirmé contient une référence. Le piège anti-robots n'en renvoie pas.
+              if (body && body.ok === true && typeof body.reference === 'string' &&
+                  /^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(body.reference)) {
+                googleConversion(GOOGLE_CONVERSIONS.lead);
+                metaLead();
+              }
             }, function () {});
           }).catch(function () {});
         }
@@ -124,14 +119,13 @@
     };
   }
 
-  // Clic sur un lien WhatsApp du site (toutes les pages, page d'accueil comprise).
+  // Un seul écouteur par clic, sur toutes les pages.
   document.addEventListener('click', function (e) {
-    var a = e.target && e.target.closest && e.target.closest('a[href^="https://wa.me/237693207431"]');
-    if (a) googleConversion(GOOGLE_CONVERSIONS.whatsapp);
+    var link = e.target && e.target.closest && e.target.closest('a[href^="https://wa.me/237693207431"]');
+    if (!link) return;
+    googleConversion(GOOGLE_CONVERSIONS.whatsapp);
+    if (!HEALTH_PAGE && choice() === 'accepted' && typeof window.fbq === 'function') window.fbq('track', 'Contact');
   });
-
-  // La page d'accueil a déjà sa bannière, son bouton et le suivi des clics WhatsApp : rien à ajouter.
-  if (document.getElementById('tracking-consent')) return;
 
   function buildBanner() {
     var who = HEALTH_PAGE
@@ -155,36 +149,58 @@
       '<button type="button" id="hec-consent-refuse" style="cursor:pointer;padding:10px 16px;border:1px solid #8d9d96;background:transparent;color:#f9f6ef;font:inherit">Continuer sans mesure</button>' +
       '</div>';
     document.body.appendChild(box);
-    document.getElementById('hec-consent-accept').addEventListener('click', function () {
-      saveChoice('accepted'); loadAll(); box.style.display = 'none';
-    });
-    document.getElementById('hec-consent-refuse').addEventListener('click', function () {
-      saveChoice('refused'); box.style.display = 'none';
-      // Des scripts déjà chargés ne se déchargent pas : on recharge la page pour les retirer.
-      if (window.__hecMetaLoaded || window.__hecGoogleLoaded || window.__hecLinkedInLoaded) location.reload();
-    });
     return box;
   }
 
   function init() {
-    var box = buildBanner();
-    var open = function () { box.style.display = 'block'; document.getElementById('hec-consent-accept').focus(); };
-    // Lien discret en bas de page pour changer d'avis.
-    var p = document.createElement('p');
-    p.style.cssText = 'text-align:center;margin:12px 0 18px;font-size:13px';
-    var link = document.createElement('button');
-    link.type = 'button';
-    link.textContent = 'Gérer la mesure publicitaire';
-    link.style.cssText = 'cursor:pointer;background:none;border:0;padding:0;color:inherit;text-decoration:underline;font:inherit';
-    link.addEventListener('click', open);
-    p.appendChild(link);
-    document.body.appendChild(p);
-    if (!choice()) open();
-    // Clic sur WhatsApp = « Contact » pour Meta (jamais sur les pages santé, où Meta n'est pas chargé).
-    document.addEventListener('click', function (e) {
-      var a = e.target.closest && e.target.closest('a[href^="https://wa.me/237693207431"]');
-      if (a && !HEALTH_PAGE && choice() === 'accepted' && typeof window.fbq === 'function') window.fbq('track', 'Contact');
+    var homePanel = document.getElementById('tracking-consent');
+    var box = homePanel || buildBanner();
+    var accept = document.getElementById(homePanel ? 'tracking-accept' : 'hec-consent-accept');
+    var refuse = document.getElementById(homePanel ? 'tracking-refuse' : 'hec-consent-refuse');
+    var trigger;
+    function show(visible) {
+      if (homePanel) box.classList.toggle('visible', visible);
+      else box.style.display = visible ? 'block' : 'none';
+    }
+    function open(event) {
+      trigger = event.currentTarget;
+      show(true);
+      accept.focus({ preventScroll: true });
+    }
+    function close() {
+      show(false);
+      if (trigger) trigger.focus({ preventScroll: true });
+      trigger = null;
+    }
+    accept.addEventListener('click', function () {
+      saveChoice('accepted');
+      loadAll();
+      close();
     });
+    refuse.addEventListener('click', function () {
+      var persisted = saveChoice('refused');
+      close();
+      // Recharger retire les scripts qui ont été chargés avant le retrait.
+      if (persisted && (window.__hecMetaLoaded || window.__hecGoogleLoaded || window.__hecLinkedInLoaded)) location.reload();
+    });
+
+    if (homePanel) {
+      document.querySelectorAll('#tracking-settings, #footer-tracking-settings').forEach(function (button) {
+        button.addEventListener('click', open);
+      });
+    } else {
+      var p = document.createElement('p');
+      p.style.cssText = 'text-align:center;margin:12px 0 18px;font-size:13px';
+      var link = document.createElement('button');
+      link.type = 'button';
+      link.textContent = 'Gérer la mesure publicitaire';
+      link.style.cssText = 'cursor:pointer;background:none;border:0;padding:0;color:inherit;text-decoration:underline;font:inherit';
+      link.addEventListener('click', open);
+      p.appendChild(link);
+      document.body.appendChild(p);
+    }
+    if (choice() === 'accepted') loadAll();
+    else if (choice() !== 'refused') show(true);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
