@@ -1,0 +1,6 @@
+﻿Référence;Responsable;Statut;Pièces ou informations;Prochaine action;Échéance;État du suivi
+COT-001;Commercial A;Cotation envoyée;Pièces reçues;Vérifier la réception;2026-11-20;Ouvert
+COT-002;Agent transit B;En attente de pièce;Liste de colisage manquante;Demander la liste de colisage;2026-11-20;Ouvert
+COT-003;;Demande à préciser;Destination à confirmer;Confirmer la destination;2026-11-21;Ouvert
+COT-004;Commercial C;Décision client attendue;Bon de commande attendu;Confirmer la date de décision;;Ouvert
+COT-005;Commercial A;Acceptée;Pièces reçues;;;Clôturé
