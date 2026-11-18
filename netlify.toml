@@ -64,3 +64,17 @@
   to = "/sales-operating-system-btp-immobilier-cameroun"
   status = 301
   force = true
+
+
+# Regrouper les anciennes URL sur leurs destinations canoniques.
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/mentions-legales.html"
+  to = "/mentions-legales"
+  status = 301
+  force = true
