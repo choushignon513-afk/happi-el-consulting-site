@@ -78,3 +78,10 @@
   to = "/mentions-legales"
   status = 301
   force = true
+
+# « /20 » a été détecté depuis l’accueil. Le diagnostic existe sous cette ancre.
+[[redirects]]
+  from = "/20"
+  to = "/#qualification"
+  status = 301
+  force = true
