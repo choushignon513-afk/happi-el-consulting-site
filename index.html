@@ -354,7 +354,7 @@ input,select,textarea{font-size:16px!important}button,.btn{min-height:44px}
 <button class="btn light" style="margin-top:26px" type="submit">Obtenir mon score /20 ↗</button>
 <div class="qualify-result" id="qualification-result" role="status" aria-live="polite" hidden>
 <div class="score-orb" id="score-orb">
-<strong id="score-value">0<small>/20</small>
+<strong id="score-value"><span id="score-points">0</span><small id="score-scale">/20</small>
 </strong>
 </div>
 <div>
@@ -1155,7 +1155,8 @@ document.querySelector('#qualification-form').addEventListener('submit',e=>{
   const zone=document.querySelector('#qualification-result');
   if(manquants.length){
     zone.hidden=false;
-    document.querySelector('#score-value').replaceChildren(document.createTextNode('—'));
+    document.querySelector('#score-points').textContent='—';
+    document.querySelector('#score-scale').hidden=true;
     document.querySelector('#qual-title').textContent='Il manque '+manquants.length+' réponse'+(manquants.length>1?'s':'');
     document.querySelector('#qual-copy').textContent='Complétez '+manquants.join(', ')+' pour obtenir votre score sur 20.';
     const premier=!sector?document.querySelector('#qual-sector'):!service?document.querySelector('#qual-priority'):inputs.find(i=>i.value==='');
@@ -1170,7 +1171,8 @@ document.querySelector('#qualification-form').addEventListener('submit',e=>{
   else if(score<=16){level='Pilote';title='Prêt pour un pilote maîtrisé';copy='Vos bases permettent d’engager un périmètre pilote, avec des critères de succès, des garde-fous et une documentation définis dès le départ.'}
   else{level='Accélération';title='Prêt à optimiser et déployer';copy='Votre maturité permet de concentrer l’intervention sur l’intégration, la performance et le passage à l’échelle, sans perdre la gouvernance humaine.'}
   qualificationData={sector,service,answers:values,score,level};
-  document.querySelector('#score-value').replaceChildren(document.createTextNode(String(score)),Object.assign(document.createElement('small'),{textContent:'/20'}));
+  document.querySelector('#score-points').textContent=String(score);
+  document.querySelector('#score-scale').hidden=false;
   document.querySelector('#score-orb').style.setProperty('--score-angle',(score/20*360)+'deg');
   document.querySelector('#qual-title').textContent=title;
   document.querySelector('#qual-copy').textContent=copy+' Orientation recommandée : '+service+'.';
