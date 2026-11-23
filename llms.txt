@@ -2,7 +2,7 @@
 
 > Cabinet de conseil basé à Douala, Cameroun, fondé par Emmanuel Fomba. Clients visés en priorité : entreprises de 2 à 10 personnes. Spécialisé en systèmes de croissance et d'opérations augmentés par l'IA pour les PME au Cameroun et en Afrique francophone, et en pilotage exécutif (tableau de bord du DG, diagnostic exécutif avec décision GO / NO-GO) pour les directions générales, notamment dans le transport et la logistique. Ouvert à l'international.
 
-Dernière mise à jour de ce fichier : 22 novembre 2026.
+Dernière mise à jour de ce fichier : 24 novembre 2026.
 
 Fiche d'identité vérifiée (qui, quoi, où, combien, ce que nous ne faisons pas, homonymes) : https://happi-el-consulting.com/happi-el-en-bref
 
@@ -28,6 +28,8 @@ Fiche d'identité vérifiée (qui, quoi, où, combien, ce que nous ne faisons pa
 - [LeadFlow AI](https://happi-el-consulting.com/qualification-suivi-demandes-leadflow-cameroun) : qualification et suivi des demandes, 150 000 FCFA puis 100 000 FCFA/mois pendant 3 mois.
 - [EchoFlow AI](https://happi-el-consulting.com/visibilite-preuves-expertise-echoflow-cameroun) : visibilité dans les moteurs de recherche et de réponse IA, 100 000 FCFA puis 50 000 FCFA/mois ; aucune citation garantie. Pack LeadFlow + EchoFlow : 200 000 FCFA puis 130 000 FCFA/mois pendant 3 mois. Tarifs LeadFlow, EchoFlow et pack valables jusqu’au 31 décembre 2026.
 
+- [Pilote 30 jours transport et logistique](https://happi-el-consulting.com/pilote-30-jours-transport-logistique-cameroun) : un seul flux (cotation, validation, voyage ou dossier, incident, facturation), mesure au jour 0 et au jour 30, critères d'acceptation écrits avant le démarrage ; aucun gain garanti ; tarif communiqué sur demande.
+
 ## Secteurs accompagnés
 - [Transport & logistique](https://happi-el-consulting.com/sales-operating-system-transport-logistique-cameroun) : CRM et cotations, flotte et voyages (véhicules, chauffeurs, documents à échéance, immobilisations, quantités chargées et livrées), sécurité HSE, marge et facturation par voyage, tableau de bord du DG. Sales OS Logistique 2 200 000 FCFA.
 - [Tableau de bord du DG d'une entreprise de transport](https://happi-el-consulting.com/tableau-de-bord-dg-transport-logistique-cameroun) : les 12 indicateurs (ventes, pipeline pondéré, taux de gain, livraisons à l'heure et complètes, utilisation de la flotte, attente au chargement, incidents graves, jours sans arrêt, documents expirés, marge par voyage, voyages non facturés, délai de paiement) avec définition, calcul et source ; aperçu illustratif aux données fictives.
@@ -45,6 +47,8 @@ Fiche d'identité vérifiée (qui, quoi, où, combien, ce que nous ne faisons pa
 ## Preuves de méthode
 - [Visibilité IA au Cameroun, suivi dans le temps](https://happi-el-consulting.com/etude-visibilite-ia-cameroun-2026) : mêmes 9 questions d'acheteur ; septembre 2026 : 0 citation ; 1er novembre 2026 : 4/9 sur ChatGPT, 3/9 sur Gemini ; 7 novembre 2026 : 4/9 sur Gemini, 3/9 sur ChatGPT, 3/9 sur Grok, 2/9 sur Perplexity ; Claude non mesuré ; méthode et limites publiées.
 - [Diagnostic exécutif : priorités, budget et suivi (Cameroun)](https://happi-el-consulting.com/diagnostic-executif-priorites-budget-cameroun) : guide de méthode — partir d'une décision, rapprocher perceptions et traces, grille constat/preuve/action/responsable/coût sur 12 mois en FCFA (exemple fictif), pilote avant extension, suivi après restitution ; aucun résultat client revendiqué.
+- [Corridor Douala–Bangui : ce que change le programme de la Banque mondiale](https://happi-el-consulting.com/corridor-douala-bangui-transport-transit-2026) : 1,12 milliard USD approuvés le 12 juin 2026 (phase 1 : 525 millions USD) ; ce qui est financé, ce que le communiqué ne dit pas, et les indicateurs qu'un transporteur peut relever dès maintenant ; source : Banque mondiale.
+- [Annexe type : gouvernance de l'IA et contrôle humain](https://happi-el-consulting.com/annexe-gouvernance-ia-controle-humain) : jointe à chaque proposition ; données utilisées, ce que l'IA fait et ne fait pas, qui valide quoi, journaux, exceptions, reprise, fin de contrat.
 - [Baromètre de la visibilité IA : le transit à Douala, novembre 2026](https://happi-el-consulting.com/barometre-visibilite-ia-transit-douala-2026) : 6 questions d'acheteur, 4 moteurs (ChatGPT, Gemini, Grok, Perplexity), 24 réponses ; 53 entreprises de transit citées, dont 40 par un seul moteur ; méthode et limites publiées ; HAPPI-EL n'est pas un transitaire.
 - [Comment choisir un consultant en automatisation IA au Cameroun](https://happi-el-consulting.com/comment-choisir-consultant-automatisation-ia-cameroun) : 10 critères vérifiables (diagnostic, preuves, prix en FCFA, mesure de départ, loi n° 2024/017 sur les données personnelles, contrôle humain, réversibilité, canaux locaux, secteur, promesses honnêtes), questions à poser et signaux d'alerte.
 - [Prix de l'automatisation à Douala](https://happi-el-consulting.com/prix-automatisation-pme-douala-2026): Grille tarifaire réelle 2026.
