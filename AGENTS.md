@@ -17,7 +17,7 @@ Décision d'Emmanuel Fomba du 22 novembre 2026.
 ## Règles permanentes du site
 - Aucun avis, note ou témoignage inventé ; pas de `aggregateRating` ; pas de prix barré fictif.
 - « Aucune citation garantie » sur toute offre EchoFlow.
-- Pages liées aux cliniques : ni Meta Pixel ni Google Ads (seule la balise LinkedIn, après accord) ; le mot « patient » n'est pas utilisé.
+- Pages liées aux cliniques : ni Meta Pixel, ni Google Ads, ni Google Analytics (seule la balise LinkedIn, après accord) ; le mot « patient » n'est pas utilisé.
 - Loi n° 2024/017 : aucun numéro d'article ni montant d'amende sans validation d'un avocat.
 - HAPPI-EL OS reste typé `Service` avec `additionalType` SoftwareApplication (jamais `SoftwareApplication` seul sans note réelle).
 - Mêmes prix, mêmes noms d'offres et même définition du client idéal sur le site, dans HAPPI-EL OS et dans llms.txt.

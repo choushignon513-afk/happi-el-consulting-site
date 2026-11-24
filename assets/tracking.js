@@ -1,15 +1,16 @@
-/* HAPPI-EL CONSULTING — mesure publicitaire (Meta Pixel, Google Ads, LinkedIn Insight Tag).
+/* HAPPI-EL CONSULTING — mesure d'audience et publicitaire (Google Analytics 4, Meta Pixel, Google Ads, LinkedIn Insight Tag).
    Chargée sur toutes les pages. Règles :
    1. Rien n'est exécuté sans l'accord explicite du visiteur (même clé que la bannière de la page d'accueil).
    2. Chaque page sans bannière en reçoit une (première visite), plus un lien « Gérer la mesure publicitaire »
       en bas de page pour changer d'avis à tout moment.
-   3. Pages liées aux cliniques et à la santé : ni Meta ni Google Ads (règles de ces plateformes sur la santé) ;
+   3. Pages liées aux cliniques et à la santé : ni Meta, ni Google Ads, ni Google Analytics (règles de ces plateformes sur la santé) ;
       seule la balise LinkedIn (mesure professionnelle) peut s'y charger, après accord. */
 (function () {
   'use strict';
   var KEY = 'hec_meta_tracking_consent';
   var PIXEL_ID = '1072898865555552';
   var GOOGLE_ADS_ID = 'AW-18421055573';
+  var GA4_ID = 'G-9GGM64PFHM'; // propriété « www.happi-el-consulting.com », flux web du site
   var LINKEDIN_PARTNER_ID = '11122153';
   var HEALTH_PAGE = /(careflow|clinique|sante|medical|patient)/i.test(location.pathname);
 
@@ -49,6 +50,8 @@
     document.head.appendChild(tag);
     window.gtag('js', new Date());
     window.gtag('config', GOOGLE_ADS_ID);
+    // Google Analytics 4 : IP non conservée par GA4 ; pas de signaux Google (publicité personnalisée).
+    window.gtag('config', GA4_ID, { allow_google_signals: false, allow_ad_personalization_signals: false });
   }
 
   function loadLinkedIn() {
@@ -87,6 +90,12 @@
     window.fbq('track', 'Lead');
   }
 
+  // Google Analytics 4 : évènements sans donnée personnelle (ni nom, ni e-mail, ni téléphone).
+  function gaEvent(name, params) {
+    if (HEALTH_PAGE || choice() !== 'accepted' || typeof window.gtag !== 'function') return;
+    window.gtag('event', name, params || {});
+  }
+
   function googleConversion(sendTo) {
     if (HEALTH_PAGE || choice() !== 'accepted' || typeof window.gtag !== 'function') return;
     window.gtag('event', 'conversion', { send_to: sendTo, transport_type: 'beacon' });
@@ -109,6 +118,7 @@
               if (body && body.ok === true && typeof body.reference === 'string' &&
                   /^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(body.reference)) {
                 googleConversion(GOOGLE_CONVERSIONS.lead);
+                gaEvent('generate_lead', { lead_source: 'formulaire_site' });
                 metaLead();
               }
             }, function () {});
@@ -124,13 +134,14 @@
     var link = e.target && e.target.closest && e.target.closest('a[href^="https://wa.me/237693207431"]');
     if (!link) return;
     googleConversion(GOOGLE_CONVERSIONS.whatsapp);
+    gaEvent('contact_whatsapp', { link_location: location.pathname });
     if (!HEALTH_PAGE && choice() === 'accepted' && typeof window.fbq === 'function') window.fbq('track', 'Contact');
   });
 
   function buildBanner() {
     var who = HEALTH_PAGE
-      ? 'Avec votre accord, LinkedIn peut mesurer les visites liées à nos campagnes. Sur cette page consacrée aux cliniques, Meta et Google Ads ne sont jamais chargés.'
-      : 'Avec votre accord, Meta, Google Ads et LinkedIn peuvent mesurer les visites et actions liées à nos campagnes.';
+      ? 'Avec votre accord, LinkedIn peut mesurer les visites liées à nos campagnes. Sur cette page consacrée aux cliniques, Meta, Google Ads et Google Analytics ne sont jamais chargés.'
+      : 'Avec votre accord, Google Analytics mesure la fréquentation du site, et Meta, Google Ads et LinkedIn mesurent les visites et actions liées à nos campagnes.';
     var box = document.createElement('aside');
     box.id = 'hec-consent';
     box.setAttribute('role', 'dialog');
@@ -140,7 +151,7 @@
       'background:#071a18;color:#f9f6ef;border:1px solid #52665e;box-shadow:0 18px 50px rgba(0,0,0,.3);padding:18px 20px;' +
       'font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;max-height:80vh;overflow:auto;display:none';
     box.innerHTML =
-      '<p id="hec-consent-title" style="margin:0 0 6px;font-weight:700;font-size:17px">Mesure publicitaire</p>' +
+      '<p id="hec-consent-title" style="margin:0 0 6px;font-weight:700;font-size:17px">Mesure d\'audience et publicitaire</p>' +
       '<p id="hec-consent-copy" style="margin:0;color:#c7d1cc;font-size:14px">' + who +
       ' Refuser ne bloque aucune fonction du site. Vous pouvez modifier votre choix à tout moment ' +
       '(<a href="/politique-confidentialite" style="color:#f9f6ef">politique de confidentialité</a>).</p>' +
@@ -193,7 +204,7 @@
       p.style.cssText = 'text-align:center;margin:12px 0 18px;font-size:13px';
       var link = document.createElement('button');
       link.type = 'button';
-      link.textContent = 'Gérer la mesure publicitaire';
+      link.textContent = 'Gérer la mesure d\'audience et publicitaire';
       link.style.cssText = 'cursor:pointer;background:none;border:0;padding:0;color:inherit;text-decoration:underline;font:inherit';
       link.addEventListener('click', open);
       p.appendChild(link);
