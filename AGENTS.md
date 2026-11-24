@@ -23,3 +23,4 @@ Décision d'Emmanuel Fomba du 22 novembre 2026.
 - Mêmes prix, mêmes noms d'offres et même définition du client idéal sur le site, dans HAPPI-EL OS et dans llms.txt.
 - Ne pas publier le prospect PSL ni ses dirigeants.
 - Aucun envoi ni publication au nom d'Emmanuel sans son accord explicite sur le texte final.
+- Toute modification de `assets/tracking.js` change la version dans son adresse (`/assets/tracking.js?v=AAAAMMJJ`) sur toutes les pages : Cloudflare garde sinon l'ancienne version jusqu'à 24 heures.
