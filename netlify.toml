@@ -85,3 +85,10 @@
   to = "/#qualification"
   status = 301
   force = true
+
+# Ancienne URL /transport découverte par Google : rediriger vers l’offre sectorielle canonique.
+[[redirects]]
+  from = "/transport"
+  to = "/sales-operating-system-transport-logistique-cameroun"
+  status = 301
+  force = true
