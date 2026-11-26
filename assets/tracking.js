@@ -138,6 +138,20 @@
     if (!HEALTH_PAGE && choice() === 'accepted' && typeof window.fbq === 'function') window.fbq('track', 'Contact');
   });
 
+  // Google Analytics 4 : clic vers la démonstration transit (angles A/B des messages, distingués par utm_content).
+  document.addEventListener('click', function (e) {
+    var demo = e.target && e.target.closest && e.target.closest('a[href*="#demonstration"]');
+    if (demo) gaEvent('clic_demo', { link_location: location.pathname });
+  });
+
+  // Google Analytics 4 : premier contact avec le score /20 (début du diagnostic), une seule fois par page.
+  var diagStarted = false;
+  document.addEventListener('change', function (e) {
+    if (diagStarted || !e.target || !e.target.closest || !e.target.closest('#qualification-form')) return;
+    diagStarted = true;
+    gaEvent('debut_diagnostic', { link_location: location.pathname });
+  });
+
   function buildBanner() {
     var who = HEALTH_PAGE
       ? 'Avec votre accord, LinkedIn peut mesurer les visites liées à nos campagnes. Sur cette page consacrée aux cliniques, Meta, Google Ads et Google Analytics ne sont jamais chargés.'
