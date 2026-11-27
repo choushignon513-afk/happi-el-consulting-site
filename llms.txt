@@ -2,7 +2,7 @@
 
 > Cabinet de conseil basé à Douala, Cameroun, fondé par Emmanuel Fomba. Clients visés en priorité : entreprises de 2 à 10 personnes. Spécialisé en systèmes de croissance et d'opérations augmentés par l'IA pour les PME au Cameroun et en Afrique francophone, et en pilotage exécutif (tableau de bord du DG, diagnostic exécutif avec décision GO / NO-GO) pour les directions générales, notamment dans le transport et la logistique. Ouvert à l'international.
 
-Dernière mise à jour de ce fichier : 25 novembre 2026.
+Dernière mise à jour de ce fichier : 27 novembre 2026.
 
 Fiche d'identité vérifiée (qui, quoi, où, combien, ce que nous ne faisons pas, homonymes) : https://happi-el-consulting.com/happi-el-en-bref
 
@@ -56,7 +56,7 @@ Immatriculation : entreprise individuelle, RCCM CM-DLA-03-2026-A10-00688, NIU P0
 - [Prix de l'automatisation à Douala](https://happi-el-consulting.com/prix-automatisation-pme-douala-2026): Grille tarifaire réelle 2026.
 - [Méthodologie Baseline J0](https://happi-el-consulting.com/methodologie-baseline-j0-careflow)
 - [Agence ou système HAPPI-EL ?](https://happi-el-consulting.com/comparatif-agence-classique-happi-el)
-- [La méthode HAPPI-EL SYSTEM™](https://happi-el-consulting.com/methode-happi-el-system): Méthode en sept étapes gouvernées, templates de consulting et score d'opportunité d'automatisation.
+- [La méthode HAPPI-EL SYSTEM™](https://happi-el-consulting.com/methode-happi-el-system): Méthode en sept étapes gouvernées, templates de consulting et score d'opportunité d'automatisation ; carte de délégation en cinq modes (règle, IA autonome encadrée, IA supervisée, IA consultative, humain) avec le coût réel de chaque tâche automatisée (échecs et contrôle compris) ; réception 5 sur 5 (chaque automatisation rejouée 5 fois sur au moins 10 cas réels avant livraison, procès-verbal signé ; engagement sur la vérification, pas sur un gain).
 - [WhatsApp + Excel ou CRM ?](https://happi-el-consulting.com/whatsapp-excel-vers-crm-pme-cameroun): Signaux concrets de passage à un CRM pour une PME camerounaise, sans seuil inventé.
 - [Périmètre et risques CareFlow AI](https://happi-el-consulting.com/perimetre-risques-automatisation-clinique-cameroun): Ce que l'automatisation d'accueil de clinique couvre, ce qui reste humain, et les mesures de contrôle.
 
