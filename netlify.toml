@@ -96,6 +96,6 @@
 # Google a déduit l'adresse /20 du texte « score /20 » du script de l'accueil : la renvoyer vers le diagnostic.
 [[redirects]]
   from = "/20"
-  to = "/#diagnostic"
+  to = "/#qualification"
   status = 301
   force = true
