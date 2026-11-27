@@ -1,4 +1,5 @@
 User-agent: *
-Disallow: /cdn-cgi/l/email-protection
+Disallow: /cdn-cgi/
+Disallow: /api/
 
 Sitemap: https://happi-el-consulting.com/sitemap.xml
