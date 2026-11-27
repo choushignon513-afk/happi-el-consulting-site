@@ -1,6 +1,6 @@
 # HAPPI-EL CONSULTING
 
-> Cabinet de conseil basé à Douala, Cameroun, fondé par Emmanuel Fomba. Clients visés en priorité : entreprises de 2 à 10 personnes. Spécialisé en systèmes de croissance et d'opérations augmentés par l'IA pour les PME au Cameroun et en Afrique francophone, et en pilotage exécutif (tableau de bord du DG, diagnostic exécutif avec décision GO / NO-GO) pour les directions générales, notamment dans le transport et la logistique. Ouvert à l'international.
+> Cabinet de conseil basé à Douala, Cameroun, fondé par Emmanuel Fomba. Clients visés en priorité : entreprises de 2 à 10 personnes. Cabinet de marketing stratégique et de systèmes opérationnels augmentés par l'IA : positionnement et acquisition, WhatsApp + CRM (HAPPI-EL OS relie WhatsApp Business au CRM : chaque demande a un responsable, une prochaine action et une date), automatisation IA gouvernée et pilotage des processus, pour les PME et les grandes entreprises au Cameroun et en Afrique francophone, Signature : « Voir. Piloter. Accélérer. » (Voir : diagnostic ; Accélérer : marketing stratégique ; Piloter : systèmes et tableau de bord). Également spécialisé et en pilotage exécutif (tableau de bord du DG, diagnostic exécutif avec décision GO / NO-GO) pour les directions générales, notamment dans le transport et la logistique. Ouvert à l'international.
 
 Dernière mise à jour de ce fichier : 27 novembre 2026.
 
@@ -12,6 +12,7 @@ Immatriculation : entreprise individuelle, RCCM CM-DLA-03-2026-A10-00688, NIU P0
 1. Diagnostiquer
 - [Score de maturité /20](https://happi-el-consulting.com/#qualification) : gratuit, en ligne, indicatif.
 - [HAPPI-EL Diagnostic](https://happi-el-consulting.com/#expertises) : payant. Diagnostic Flash 75 000 FCFA (1 h + synthèse sous 48 h) ; audit express 175 000 FCFA (une demi-journée) ; diagnostic exécutif à partir de 450 000 FCFA, déductible à 50 % de la mission engagée sous 60 jours.
+- [Sprint Marketing Stratégique](https://happi-el-consulting.com/sprint-marketing-strategique-pme-cameroun) : 350 000 FCFA HT pour une PME, 2 semaines ; grandes entreprises et groupes : sur devis, à partir de 1 500 000 FCFA HT (4 à 6 semaines). Positionnement, messages pour deux cibles, offre et prix, plan d'acquisition sur 90 jours, scripts WhatsApp et e-mail, tableau de suivi dans HAPPI-EL OS. 50 % déduits de la mission ou de l'abonnement engagé sous 60 jours. Stratégie par HAPPI-EL ; exécution (publicité, contenus, réseaux) confiée à des partenaires et mesurée dans HAPPI-EL OS. Aucun gain garanti.
 2. Installer
 - [HAPPI-EL Systems](https://happi-el-consulting.com/#expertises) : conception et déploiement du système prioritaire dans HAPPI-EL OS. AI Business OS dès 1 600 000 FCFA (PME aux systèmes complexes : plus de 5 à 30 personnes, plusieurs processus de services, activités ou sites) ; Sales OS Immobilier dès 1 900 000 FCFA ; Sales OS Logistique 2 200 000 FCFA.
 - [CareFlow AI](https://happi-el-consulting.com/careflow-ai-cliniques-privees-cameroun) : accueil administratif des cliniques privées, sans aucun diagnostic médical. Baseline J0 350 000 FCFA ; pilote contrôlé 1 500 000 FCFA puis 350 000 FCFA/mois.
