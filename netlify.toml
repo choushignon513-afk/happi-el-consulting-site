@@ -92,3 +92,10 @@
   to = "/sales-operating-system-transport-logistique-cameroun"
   status = 301
   force = true
+
+# Google a déduit l'adresse /20 du texte « score /20 » du script de l'accueil : la renvoyer vers le diagnostic.
+[[redirects]]
+  from = "/20"
+  to = "/#diagnostic"
+  status = 301
+  force = true
